@@ -1,3 +1,11 @@
+# View the website on Heroku
+
+-> https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github
+
+
+
+---
+
 # Ruby on Rails Tutorial sample application
 
 This is the sample application for
