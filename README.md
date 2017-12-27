@@ -1,7 +1,10 @@
-# You can View The Website here [ Running on Heroku Server ]
-https://sheltered-falls-72283.herokuapp.com
+# View the website on Heroku
+
+-> https://stackoverflow.com/questions/12799719/how-to-upload-a-project-to-github
 
 
+
+---
 
 # Ruby on Rails Tutorial sample application
 
