@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.1.4'
-gem 'bcrypt', '3.1.11'
+gem 'bcrypt'
 gem 'bootstrap-sass', '3.3.7'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
@@ -14,7 +14,7 @@ gem 'email_validator', '~> 1.6'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
-  gem 'byebug',  '9.0.6', platform: :mri
+  gem 'byebug', '3.5.0'
 end
 
 group :development do

@@ -48,6 +48,10 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
+    byebug (3.5.0)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -56,8 +60,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    columnize (0.9.0)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
+    debugger-linecache (1.2.0)
     email_validator (1.6.0)
       activemodel
     erubi (1.7.0)
@@ -108,7 +114,7 @@ GEM
       ruby-progressbar
     multi_json (1.12.2)
     nenv (0.3.0)
-    nio4r (2.1.0)
+    nio4r (2.2.0)
     nokogiri (1.8.1-x64-mingw32)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
@@ -166,6 +172,7 @@ GEM
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
     shellany (0.0.1)
+    slop (3.6.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -204,9 +211,9 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  bcrypt (= 3.1.11)
+  bcrypt
   bootstrap-sass (= 3.3.7)
-  byebug (= 9.0.6)
+  byebug (= 3.5.0)
   coffee-rails (= 4.2.2)
   email_validator (~> 1.6)
   guard (= 2.13.0)
