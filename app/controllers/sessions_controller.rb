@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # Log the user in and redirect to the user's show page.
       log_in user
+      remember user
       redirect_to user
     else
       # Create an error message.
@@ -17,7 +18,7 @@ class SessionsController < ApplicationController
    end
 
   def destroy
-    log_out
+    log_out if logged_in?
     redirect_to root_url
   end
 
