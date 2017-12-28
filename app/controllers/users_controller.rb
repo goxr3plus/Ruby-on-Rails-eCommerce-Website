@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params) # Not the final implementation!
     if @user.save
-      # Handle a successful save.
+      # Handle a successful save. massalel
       log_in @user
       flash[:success] = 'success'
       redirect_to @user
