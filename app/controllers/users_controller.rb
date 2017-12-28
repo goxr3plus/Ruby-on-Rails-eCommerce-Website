@@ -1,12 +1,10 @@
-require 'byebug'
-
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-      # byebug
   end
 
   def new
+    byebug
     @user = User.new
    end
 
@@ -14,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params) # Not the final implementation!
     if @user.save
       # Handle a successful save.
-      flash[:success] = "#{:success}"
+      flash[:success] = 'success'
       redirect_to @user
     else
       render 'new'
