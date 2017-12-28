@@ -4,8 +4,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    byebug
     @user = User.new
+    # byebug
    end
 
   def create
