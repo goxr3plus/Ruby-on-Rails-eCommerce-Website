@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       # Handle a successful save. massalel
       log_in @user
-      flash[:success] = 'success'
+      flash[:success] = "Successfully created user [ #{@user.name} ]"
       redirect_to @user
     else
       render 'new'
