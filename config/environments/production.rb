@@ -1,6 +1,11 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :test
+  host = 'https://dopeshop.herokuapp.com'
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+
   # Force all access to the app over SSL, use Strict-Transport-Security,
   # and use secure cookies.
   config.force_ssl = true
