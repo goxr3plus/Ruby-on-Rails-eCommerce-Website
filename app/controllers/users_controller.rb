@@ -4,12 +4,13 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 15)
-   end
+  @users = User.where(activated: true).paginate(page: params[:page])
+end
 
-  def show
-    @user = User.find(params[:id])
-  end
+def show
+  @user = User.find(params[:id])
+  redirect_to root_url and return unless @user.activated?
+end
 
   def new
     @user = User.new
@@ -20,9 +21,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params) # Not the final implementation!
     if @user.save
       # Handle a successful save. massalel
-      log_in @user
-      flash[:success] = "Successfully created user [ #{@user.name} ]"
-      redirect_to @user
+      @user.send_activation_email
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = 'Please check your email to activate your account.'
+      redirect_to root_url
     else
       render 'new'
     end
@@ -77,6 +79,6 @@ class UsersController < ApplicationController
   end
 
   def create_activation_digest
-  # Create the token and digest.
+    # Create the token and digest.
   end
 end
