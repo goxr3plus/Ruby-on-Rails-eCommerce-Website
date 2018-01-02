@@ -18,7 +18,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
       assert_select '#user_email'
       assert_select '#user_password'
       assert_select '#user_password_confirmation'
-      assert_select 'form[action="/signup"]'
+      assert_select 'form[action="/users"]'
     end
 
     test 'valid signup information' do
