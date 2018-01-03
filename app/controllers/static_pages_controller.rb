@@ -1,5 +1,7 @@
 class StaticPagesController < ApplicationController
-  def home; end
+  def home
+    @users = User.where(activated: true).paginate(page: params[:page])
+  end
 
   def help; end
 
