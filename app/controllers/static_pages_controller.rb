@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @micropost = current_user.microposts.build if logged_in?
   end
 
   def help; end
