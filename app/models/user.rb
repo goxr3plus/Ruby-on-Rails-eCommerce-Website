@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :microposts , dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save { email.downcase! }
   # before_save :downcase_email
@@ -58,7 +59,7 @@ class User < ApplicationRecord
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
-    update_columns(reset_digest:   User.digest(reset_token), reset_sent_at: Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 
   # Sends password reset email.
