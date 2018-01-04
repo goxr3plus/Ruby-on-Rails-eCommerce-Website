@@ -7,15 +7,15 @@
 #
 #     }
 #
-#     config.fog_directory = 'goxr3plus-rails-bucket'
+#     config.fog_directory = Rails.application.secrets.google_bucket
 # end
 
 CarrierWave.configure do |config|
   config.fog_credentials = {
 
     provider: 'Google',
-      google_storage_access_key_id: ENV['google_storage_access_key_id'],
-      google_storage_secret_access_key: ENV['google_storage_secret_access_key']
+    google_storage_access_key_id: ENV['google_storage_access_key_id'],
+    google_storage_secret_access_key: ENV['google_storage_secret_access_key']
 
   }
 

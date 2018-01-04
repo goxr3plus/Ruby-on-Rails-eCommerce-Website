@@ -27,3 +27,6 @@
 
 # Ignore uploaded test images.
 /public/uploads
+
+# Ignore application configuration
+/config/application.yml
