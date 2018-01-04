@@ -10,9 +10,11 @@
           <strong><%= @user.name %></strong>
         </h1>
       </section>
-      <section class="micropost_form">
-        <%= render 'shared/micropost_form' %>
-      </section>
+      <% if current_user?(@user) %>
+        <section class="micropost_form">
+          <%= render 'shared/micropost_form' %>
+        </section>
+      <% end %>
     </aside>
     <div class="col-md-8">
       <% if @user.microposts.any? %>
@@ -20,14 +22,6 @@
         <%= render 'shared/feed' %>
       <% end %>
     </div>
-    <!-- <div class="col-md-4">
-      <% if @user.microposts.any? %>
-        <h3>Microposts (<%= @user.microposts.count %>)</h3>
-        <%= will_paginate @microposts %>
-        <ol class="microposts">
-          <%= render @microposts %>
-        </ol>
-        <%= will_paginate @microposts %>
-      <% end %>
-    </div> -->
+    <!-- <div class="col-md-4"> <% if @user.microposts.any? %> <h3>Microposts (<%= @user.microposts.count %>)</h3> <%= will_paginate @microposts %> <ol class="microposts"> <%= render @microposts %> </ol> <%= will_paginate @microposts %> <% end %> </div>
+    -->
   </div>
