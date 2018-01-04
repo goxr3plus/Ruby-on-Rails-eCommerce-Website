@@ -6,9 +6,7 @@ class StaticPagesController < ApplicationController
     end
    end
 
-  # def products; end
-
-  def help; end
+   def products; end
 
   def about; end
 
