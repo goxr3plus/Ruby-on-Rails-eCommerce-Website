@@ -2,13 +2,7 @@
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
-        <span>
-          <%= gravatar_for @user %>
-          <%= pluralize(current_user.microposts.count, "micropost") %>
-        </span>
-        <h1>
-          <strong><%= @user.name %></strong>
-        </h1>
+        <%= render @user %>
       </section>
       <% if current_user?(@user) %>
         <section class="micropost_form">

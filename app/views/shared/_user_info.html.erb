@@ -2,3 +2,12 @@
 <h1><%= current_user.name %></h1>
 <span><%= link_to "view my profile", current_user %></span>
 <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+<% if current_user.admin? %>
+  <span>
+    <strong>Administrator</strong>
+  </span>
+<%end%>
+<% if current_user.admin? && !current_user?(user) %>
+  |
+  <%= link_to "delete", user, method: :delete, data: { confirm: "Sure you want to delete user [ #{user.name} ]" } %>
+<% end %>
