@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page], per_page: 6)
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 4)
+
+    #extra
+    @micropost  = current_user.microposts.build
+    @feed_items = @user.feed.paginate(page: params[:page] , :per_page => 6)
     redirect_to(root_url) && return unless @user.activated?
   end
 

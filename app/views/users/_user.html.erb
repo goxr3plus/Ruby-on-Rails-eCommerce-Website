@@ -5,7 +5,7 @@
     <%= pluralize(user.microposts.count, "micropost") %>
   </p>
   <% if current_user.admin? && !current_user?(user) %>
-   | <%= link_to "delete", user, method: :delete,
-                                 data: { confirm: "Sure you want to delete user [ #{user.name} ]" } %>
- <% end %>
+    |
+    <%= link_to "delete", user, method: :delete, data: { confirm: "Sure you want to delete user [ #{user.name} ]" } %>
+  <% end %>
 </li>

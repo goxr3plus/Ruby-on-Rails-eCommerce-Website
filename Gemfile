@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.1.4'
-gem 'bcrypt'
+gem 'bcrypt', git: 'https://github.com/codahale/bcrypt-ruby.git', :require => 'bcrypt'
 gem 'faker', '~> 1.8', '>= 1.8.7'
+gem 'carrierwave',             '1.1.0'
+gem 'mini_magick',             '4.7.0'
+gem 'fog-aws',                 '2.0.0'
+gem 'nokogiri', '1.8.1'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'bootstrap-sass', '3.3.7'

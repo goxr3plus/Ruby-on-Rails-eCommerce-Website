@@ -2,13 +2,25 @@
   <div class="row">
     <aside class="col-md-4">
       <section class="user_info">
-        <h1>
+        <span>
           <%= gravatar_for @user %>
-          <%= @user.name %>
+          <%= pluralize(current_user.microposts.count, "micropost") %>
+        </span>
+        <h1>
+          <strong><%= @user.name %></strong>
         </h1>
+      </section>
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
       </section>
     </aside>
     <div class="col-md-8">
+      <% if @user.microposts.any? %>
+        <h3>Micropost Feed(<%= @user.microposts.count %>)</h3>
+        <%= render 'shared/feed' %>
+      <% end %>
+    </div>
+    <!-- <div class="col-md-4">
       <% if @user.microposts.any? %>
         <h3>Microposts (<%= @user.microposts.count %>)</h3>
         <%= will_paginate @microposts %>
@@ -17,5 +29,5 @@
         </ol>
         <%= will_paginate @microposts %>
       <% end %>
-    </div>
+    </div> -->
   </div>
