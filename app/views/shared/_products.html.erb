@@ -36,19 +36,24 @@
   </div>
 </div>
 
+<!-- Only Admin is allowed to create new products -->
+<% if logged_in? && current_user.admin? %>
+  <%= link_to new_product_path , class: "btn btn-success" , style: "margin-top:15px;" do %>
+  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+  Create New Product
+<%end %>
+<% end %>
+
+<br/>
+
 <%= will_paginate @products %>
 
 <ul class="users">
-  <%= render @products %>
-  <%# @products.each do |product| %>
-    <%#= render 'shared/product' , product: product %>
-      <%# end %>
-      </ul>
+<%= render @products %>
+<%# @products.each do |product| %>
+  <%#= render 'shared/product' , product: product %>
+    <%# end %>
+    </ul>
 
-      <%= will_paginate @products %>
-      <br>
-
-      <!-- Only Admin is allowed to create new products -->
-      <% if logged_in? && current_user.admin? %>
-        <%= link_to 'New Product', new_product_path %>
-      <% end %>
+    <%= will_paginate @products %>
+    <br>
