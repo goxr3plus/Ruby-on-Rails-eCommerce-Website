@@ -1,0 +1,13 @@
+<li>
+  <%= link_to gravatar_for(current_user, size: 50), current_user %>
+  <span><strong><%= product.name %></strong></span>
+  <span><%= product.description %></span>
+  <span><%= link_to 'Show', product %></span>
+
+  <!-- Only Admin is allowed to modify products -->
+  <% if !current_user.admin? %>
+    <span><%= link_to 'Edit', edit_product_path(product) %></span>
+    <span><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  <% end %>
+
+</li>

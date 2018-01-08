@@ -1,0 +1,23 @@
+<% provide(:title,("Products")) %>
+
+  <p id="notice"><%= notice %></p>
+
+  <div class="center jumbotron">
+
+      <strong>--Products--</strong>
+
+  </div>
+
+  <ul class="users">
+    <%= render @products %>
+     <%# @products.each do |product| %>
+      <%#= render 'shared/product' , product: product %>
+    <%# end %>
+  </ul>
+
+  <br>
+
+  <!-- Only Admin is allowed to create new products -->
+  <% if !current_user.admin? %>
+    <%= link_to 'New Product', new_product_path %>
+  <% end %>

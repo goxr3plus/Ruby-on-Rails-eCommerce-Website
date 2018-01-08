@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def user_is_admin
+      current_user.admin?
+      # byebug
+    end
+
 end
