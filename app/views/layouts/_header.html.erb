@@ -22,7 +22,8 @@
     </li>
     <li class="dropdown">
       <li><%= link_to "#", { :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'data-placement' => 'top', :title => 'Account', 'data-original-title' => 'Account' } do %>
-        <i class="glyphicon glyphicon-user"></i>
+        <!-- <i class="glyphicon glyphicon-user"></i> -->
+        <%= gravatar_for @current_user, size: 20 %>
         Account
         <b class="caret"></b>
       <% end %>
@@ -49,7 +50,11 @@
 </ul>
 </li>
 <% else %>
-<li><%= link_to "Log in", login_path %></li>
+<li><%= link_to login_path do %>
+<i class="glyphicon glyphicon-log-out"></i>
+Log In
+<% end %>
+</li>
 <% end %>
 </ul>
 </nav>

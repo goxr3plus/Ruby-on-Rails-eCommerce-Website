@@ -21,6 +21,10 @@
     <%= form.text_field :description, id: :product_description %>
   </div>
 
+  <div class="picture">
+    <%= form.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

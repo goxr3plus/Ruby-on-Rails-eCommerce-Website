@@ -1,14 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
+<div class="center jumbotron">
+  <p>
+    <strong>Name:</strong>
+    <%= @product.name %>
+  </p>
+  <p>
+    <% if @product.picture? %>
+      <%= image_tag @product.picture.url %>
+    <%  else %>
+      <%= image_tag "no_image.png", size:"150x150" %>
+    <%end%>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @product.description %>
+  </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+  <% if logged_in? && current_user.admin? %>
+    <%= link_to 'Edit', edit_product_path(@product) %>
+    |
+    <%= link_to 'Back', products_path %>
+  <% end %>
+
+</div>

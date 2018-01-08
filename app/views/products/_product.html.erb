@@ -1,13 +1,26 @@
 <li>
-  <%= link_to gravatar_for(current_user, size: 50), current_user %>
-  <span><strong><%= product.name %></strong></span>
-  <span><%= product.description %></span>
-  <span><%= link_to 'Show', product %></span>
+
+  <%= link_to product do%>
+   <% if product.picture? %>
+    <%= image_tag product.picture.url %>
+   <% else %>
+    <%= image_tag "no_image.png", size:"150x150" %>
+   <%end%>
+  <%end %>
+
+<strong> Name : </strong>
+<%= product.name %>
+,<strong> Description : </strong>
+<%= product.description %>
+
+<p>
 
   <!-- Only Admin is allowed to modify products -->
-  <% if !current_user.admin? %>
-    <span><%= link_to 'Edit', edit_product_path(product) %></span>
-    <span><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+  <% if logged_in? && current_user.admin? %>
+    <%= link_to 'Edit', edit_product_path(product) %>
+    or
+    <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 
+</p>
 </li>

@@ -1,11 +1,11 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: %i[show edit update destroy]
-  before_action :user_is_admin, only: %i[edit update destroy]
+  before_action  :set_product, only: %i[show edit update destroy]
+  before_action  :user_is_admin, only: %i[create edit update destroy]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.paginate(page: params[:page], per_page: 5)
     @current_user = current_user
   end
 
@@ -30,6 +30,7 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
+        flash[:info] = 'Product was successfully created.'
       else
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -44,6 +45,7 @@ class ProductsController < ApplicationController
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
+        flash[:info] = 'Product was successfully updated.'
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -58,6 +60,7 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
+      flash[:info] = 'Product was successfully destroyed.'
     end
   end
 

@@ -4,10 +4,11 @@
 
   <div class="center jumbotron">
 
-      <strong>--Products--</strong>
+      <strong>Products ( <%= @products.count %> )</strong>
 
   </div>
 
+  <%= will_paginate  @products %>
   <ul class="users">
     <%= render @products %>
      <%# @products.each do |product| %>
@@ -15,9 +16,10 @@
     <%# end %>
   </ul>
 
+  <%= will_paginate  @products %>
   <br>
 
   <!-- Only Admin is allowed to create new products -->
-  <% if !current_user.admin? %>
+  <% if logged_in? && current_user.admin? %>
     <%= link_to 'New Product', new_product_path %>
   <% end %>
