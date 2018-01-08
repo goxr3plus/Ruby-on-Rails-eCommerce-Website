@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_admin
-    unless current_user.admin?
-      flash[:info] = "You don't have the privilages for this action"
+    unless logged_in? && current_user.admin?
+      flash[:info] = "You don't have the privilages for this action!"
       redirect_back(fallback_location: root_url)
     end
   end
