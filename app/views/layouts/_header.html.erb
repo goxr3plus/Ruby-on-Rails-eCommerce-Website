@@ -4,22 +4,28 @@
       <%= link_to image_tag("logo2.png",size:"52x42" , alt: "Rails logo"), 'http://rubyonrails.org/' %>
       <%= link_to "Dope Shop 2018 ~ ", root_path, id: "logo" %>
       <ul class="nav navbar-nav navbar-right">
+        <!-- Search Bar -->
+        <li></li>
+        <!-- Home -->
         <li><%= link_to root_path do %>
           <i class="glyphicon glyphicon-home"></i>
           Home
         <% end %>
       </li>
+      <!-- Basket -->
       <li><%= link_to products_path do %>
-        <i class="glyphicon glyphicon-shopping-cart"></i>
-        Products
+        <i class="glyphicon glyphicon-shopping-cart" style="color:#FFD700"></i>
+        Basket
       <% end %>
     </li>
+    <!-- Users -->
     <% if logged_in? %>
       <li><%= link_to users_path do %>
         <i class="glyphicon glyphicon-sunglasses"></i>
         Users
       <% end %>
     </li>
+    <!-- Account -->
     <li class="dropdown">
       <li><%= link_to "#", { :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'data-placement' => 'top', :title => 'Account', 'data-original-title' => 'Account' } do %>
         <!-- <i class="glyphicon glyphicon-user"></i> -->
@@ -27,18 +33,20 @@
         Account
         <b class="caret"></b>
       <% end %>
-
+      <!-- Profile -->
       <ul class="dropdown-menu">
         <li><%= link_to current_user do %>
           <i class="glyphicon glyphicon-eye-open"></i>
           Profile
         <% end %>
       </li>
+      <!-- Setting -->
       <li><%= link_to edit_user_path(current_user) do %>
         <i class="glyphicon glyphicon-cog"></i>
         Settings
       <% end %>
     </li>
+    <!-- Logout -->
     <li class="divider"></li>
     <li>
       <li><%= link_to logout_path, method: :delete do %>
@@ -50,6 +58,7 @@
 </ul>
 </li>
 <% else %>
+<!-- Log In -->
 <li><%= link_to login_path do %>
 <i class="glyphicon glyphicon-log-out"></i>
 Log In
