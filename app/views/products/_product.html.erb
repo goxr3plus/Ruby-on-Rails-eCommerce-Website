@@ -1,26 +1,40 @@
 <li>
 
   <%= link_to product do%>
-   <% if product.picture? %>
+  <% if product.picture? %>
     <%= image_tag product.picture.url %>
-   <% else %>
+  <% else %>
     <%= image_tag "no_image.png", size:"150x150" %>
-   <%end%>
-  <%end %>
+  <%end%>
+<%end %>
 
-<strong> Name : </strong>
+<strong>
+  Name :
+</strong>
 <%= product.name %>
-,<strong> Description : </strong>
+,<strong>
+  Description :
+</strong>
 <%= product.description %>
 
 <p>
-
-  <!-- Only Admin is allowed to modify products -->
-  <% if logged_in? && current_user.admin? %>
-    <%= link_to 'Edit', edit_product_path(product) %>
-    or
-    <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if logged_in? %>
+    <!-- Add to Basket -->
+    <%= link_to root_url , class: "btn btn-warning" , style: "margin-top:15px;" do %>
+    <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+    Add to Basket
   <% end %>
+<% end %>
+</p>
+
+<p>
+
+<!-- Only Admin is allowed to modify products -->
+<% if logged_in? && current_user.admin? %>
+  <%= link_to 'Edit', edit_product_path(product) %>
+  or
+  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
 
 </p>
 </li>
