@@ -18,6 +18,11 @@
     <%= @product.description %>
   </p>
 
+  <p>
+    <strong>Price:</strong>
+    <%= @product.price %> $
+  </p>
+
   <% if logged_in? && current_user.admin? %>
     <%= link_to 'Edit', edit_product_path(@product) %>
     |
