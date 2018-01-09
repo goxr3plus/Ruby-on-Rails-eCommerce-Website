@@ -1,10 +1,14 @@
 <!-- Search Bar -->
 <div class="input-group" id="adv-search">
-  <input type="text" class="form-control" placeholder="Search...."/>
+  <%= form_tag(root_url,  :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search..." %>
+  <%= submit_tag "Search" %>
+  <% end %>
+  <!-- <input type="text" class="form-control" placeholder="Search...."/>
   <div class="input-group-btn">
     <div class="btn-group" role="group">
-      <div class="dropdown dropdown-lg">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+      <div class="dropdown dropdown-lg"> -->
+        <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
           <span class="caret"></span></button>
         <div class="dropdown-menu dropdown-menu-right" role="menu">
           <form class="form-horizontal" role="form">
@@ -28,12 +32,12 @@
             <button type="submit" class="btn btn-primary">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </form>
-        </div>
-      </div>
+        </div> -->
+      <!-- </div>
       <button type="button" class="btn btn-primary">
         <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
     </div>
-  </div>
+  </div> -->
 </div>
 
 <!-- Only Admin is allowed to create new products -->
@@ -49,11 +53,18 @@
 <%= will_paginate @products %>
 
 <ul class="users">
-<%= render @products %>
-<%# @products.each do |product| %>
-  <%#= render 'shared/product' , product: product %>
-    <%# end %>
-    </ul>
+  <% if @products.present? %>
 
-    <%= will_paginate @products %>
-    <br>
+    <%= render @products %>
+    <%# @products.each do |product| %>
+      <%#= render 'shared/product' , product: product %>
+        <%# end %>
+        </ul>
+
+        <%= will_paginate @products %>
+
+      <% else %>
+        <p>There are no posts containing the term(s)
+          <%= params[:search] %>.</p>
+      <% end %>
+      <br>

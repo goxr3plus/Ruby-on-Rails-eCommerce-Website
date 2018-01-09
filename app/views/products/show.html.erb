@@ -1,41 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div class="center jumbotron">
-  <p>
-    <strong>Name:</strong>
-    <%= @product.name %>
-  </p>
-  <p>
-    <% if @product.picture? %>
-      <%= image_tag @product.picture.url %>
-    <%  else %>
-      <%= image_tag "no_image.png", size:"150x150" %>
-    <%end%>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @product.description %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= @product.price %>
-    $
-  </p>
-
-  <!-- Add to Cart -->
-  <%= link_to line_items_path(:product_id => @product.id) , class: "btn btn-warning" , style: "margin-top:15px;" do %>
-  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-  Add to Cart
-<% end %>
-
-<p>
-  <% if logged_in? && current_user.admin? %>
-    <%= link_to 'Edit', edit_product_path(@product) %>
-    |
-    <%= link_to 'Back', products_path %>
-  <% end %>
-</p>
-
+  <ul class="users">
+    <%= render 'products/product' , :product => @product%>
+  </ul>
 </div>

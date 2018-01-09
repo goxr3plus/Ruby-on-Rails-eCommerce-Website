@@ -21,10 +21,11 @@ class OrdersController < ApplicationController
       @order.line_items << item
       item.cart_id = nil
     end
-    @order.save
+    @order.save!
     Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
     redirect_to orders_path
+    byebug
 end
 
   private
