@@ -24,9 +24,9 @@
 <p>
   <%# if logged_in? %>
     <!-- Add to Basket -->
-    <%= link_to root_url , class: "btn btn-warning" , style: "margin-top:15px;" do %>
+    <%= link_to line_items_path(:product_id => product.id) , class: "btn btn-warning" , style: "margin-top:15px;" do %>
     <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-    Add to Basket
+    Add to Cart
   <% end %>
 <%# end %>
 </p>

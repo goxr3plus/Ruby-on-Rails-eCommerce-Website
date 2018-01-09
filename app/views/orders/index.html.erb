@@ -1,0 +1,14 @@
+<h2>All Orders</h2>
+
+<% @orders.each do |order| %>
+  <h3> Order ID <%= order.id %> , User ID <%= order.user_id %></h3>
+  <p>Name: <%= User.find_by(id:order.user_id).name %></p>
+  <p>Email: <%= User.find_by(id:order.user_id).email %></p>
+  <p>Line Items: </p>
+  <ul>
+    <% order.line_items.each do |item| %>
+    <li><%= item.quantity %> x <%= item.product.name %></li>
+    <% end %>
+    <br />
+  </ul>
+<% end %>

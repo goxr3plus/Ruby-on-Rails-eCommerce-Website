@@ -1,0 +1,34 @@
+<div class="center jumbotron">
+  <p>
+    Card Show
+  </p>
+  <p>
+     Total Items (<%= @cart.line_items.count %>)
+  </p>
+  <ul>
+    <% @cart.line_items.each do |line_item| %>
+      <li>Item:
+        <%= line_item.product.name %>/ Price:
+        <%= number_to_currency(line_item.product.price) %>/ Quantity:
+        <%= line_item.quantity %>/ Total Price:
+        <%= number_to_currency(line_item.total_price) %>
+        <!-- See lineItem section below for explanation of line_item links -->
+        <ul>
+          <li>
+            <%= link_to "Add one", line_item_add_path(:id => line_item), method: :post %>
+            <%= link_to "Reduce one", line_item_reduce_path(:id => line_item), method: :post %>
+          </li>
+          <li>
+            <%= link_to "Remove item", line_item_path(line_item), method: :delete %>
+          </li>
+        </ul>
+
+      <% end %>
+  </ul>
+  <h3>Total price:
+    <%= number_to_currency(@cart.sub_total) %></h3>
+  <!-- See Order section below for explanation of new_order_path -->
+  <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
+  |
+  <%= link_to "Proceed to checkout", new_order_path %>
+</div>
