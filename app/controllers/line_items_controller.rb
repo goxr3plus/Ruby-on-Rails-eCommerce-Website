@@ -1,4 +1,5 @@
-class LineItemsController < ApplicationControllers
+class LineItemsController < ApplicationController
+  before_action :logged_in_user, only: %i[create destroy add_quantity reduce_quantity]
 
   def create
     # Find associated product and current cart
@@ -15,10 +16,12 @@ class LineItemsController < ApplicationControllers
       @line_item = LineItem.new
       @line_item.cart = current_cart
       @line_item.product = chosen_product
+      @line_item.quantity = 1
     end
 
     # Save and redirect to cart show path
-    @line_item.save
+    @line_item.save!
+
     redirect_to cart_path(current_cart)
   end
 

@@ -24,16 +24,18 @@
     $
   </p>
 
+  <!-- Add to Cart -->
+  <%= link_to line_items_path(:product_id => @product.id) , class: "btn btn-warning" , style: "margin-top:15px;" do %>
+  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+  Add to Cart
+<% end %>
+
+<p>
   <% if logged_in? && current_user.admin? %>
     <%= link_to 'Edit', edit_product_path(@product) %>
     |
     <%= link_to 'Back', products_path %>
   <% end %>
-
-  <!-- Add to Cart -->
-  <%= link_to line_items_path(:product_id => product.id) , class: "btn btn-warning" , style: "margin-top:15px;" do %>
-  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-  Add to Cart
-<% end %>
+</p>
 
 </div>

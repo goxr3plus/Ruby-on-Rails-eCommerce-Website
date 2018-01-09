@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :logged_in_user, only: %i[index show new create]
+
   def index
     @orders = Order.all
   end
@@ -13,6 +15,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.update(user_id: @current_user.id)
     @current_cart.line_items.each do |item|
       @order.line_items << item
       item.cart_id = nil
@@ -20,7 +23,7 @@ class OrdersController < ApplicationController
     @order.save
     Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
-    redirect_to root_path
+    redirect_to orders_path
 end
 
   private

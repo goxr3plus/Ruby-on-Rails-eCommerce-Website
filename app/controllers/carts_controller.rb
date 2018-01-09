@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+  before_action :logged_in_user, only: %i[show destroy]
+
   def show
     @cart = @current_cart
   end

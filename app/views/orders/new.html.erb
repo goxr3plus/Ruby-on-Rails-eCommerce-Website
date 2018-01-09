@@ -1,9 +1,16 @@
-<%= form_for(@order) do |f| %>
-  <p>
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id, required: true, autofocus: true %>
+<div class="center jumbotron">
+  <%= form_for(@order) do |f| %>
+  <p style="margin-top:25px">
+    <%= f.label :pay_method %><br>
+    <%= f.text_field :pay_method, required: true, autofocus: true %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit "Finish Order"%>
   </p>
 <% end %>
+
+</div>

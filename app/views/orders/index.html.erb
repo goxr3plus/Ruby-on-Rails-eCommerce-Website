@@ -1,14 +1,16 @@
-<h2>All Orders</h2>
+<div class="center jumbotron">
+  <h2>Orders</h2>
+</div>
 
 <% @orders.each do |order| %>
-  <h3> Order ID <%= order.id %> , User ID <%= order.user_id %></h3>
-  <p>Name: <%= User.find_by(id:order.user_id).name %></p>
-  <p>Email: <%= User.find_by(id:order.user_id).email %></p>
-  <p>Line Items: </p>
-  <ul>
-    <% order.line_items.each do |item| %>
-    <li><%= item.quantity %> x <%= item.product.name %></li>
-    <% end %>
-    <br />
-  </ul>
+
+  <% if @current_user.admin? %>
+
+    <%= render 'order' , :order => order%>
+
+  <% elsif order.user_id == @current_user.id %>
+
+      <%= render 'order' , :order => order%>
+
+  <%end%>
 <% end %>

@@ -5,8 +5,9 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.paginate(page: params[:page], per_page: 5)
-    @current_user = current_user
+    # @products = Product.all.paginate(page: params[:page], per_page: 5)
+    # @current_user = current_user
+    redirect_to root_url
   end
 
   # GET /products/1
