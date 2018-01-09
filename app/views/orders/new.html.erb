@@ -11,6 +11,7 @@
   <p>
     <%= f.submit "Finish Order"%>
   </p>
-<% end %>
 
+  <%= render 'shared/cart2' , :cart => @cart %>
+<% end %>
 </div>

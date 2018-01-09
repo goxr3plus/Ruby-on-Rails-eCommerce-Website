@@ -1,0 +1,35 @@
+<li>
+
+  <%= link_to product do%>
+  <% if product.picture? %>
+    <%= image_tag product.picture.url %>
+  <% else %>
+    <%= image_tag "no_image.png", size:"150x150" %>
+  <%end%>
+<%end %>
+
+<strong>
+  Name :
+</strong>
+<%= product.name %>
+,<strong>
+  Description :
+</strong>
+<%= product.description %>
+<strong>
+  Price :
+</strong>
+<%= product.price %> $
+
+
+<p>
+
+<!-- Only Admin is allowed to modify products -->
+<% if logged_in? && current_user.admin? %>
+  <%= link_to 'Edit', edit_product_path(product) %>
+  or
+  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+</p>
+</li>
