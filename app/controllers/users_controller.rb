@@ -4,11 +4,11 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    # @users = User.where(activated: true).paginate(page: params[:page], per_page: 6)
+    @users = User.where(activated: true) #.paginate(page: params[:page], per_page: 6)
     if params[:search]
       @users = User.search(params[:search]).order('created_at ASC').paginate(page: params[:page], per_page: 5)
     else
-      @users = User.all.order('created_at ASC').paginate(page: params[:page], per_page: 5)
+      @users = @users.order('created_at ASC').paginate(page: params[:page], per_page: 5)
     end
   end
 
