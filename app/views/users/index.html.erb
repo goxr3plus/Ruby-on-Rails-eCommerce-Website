@@ -2,7 +2,7 @@
   <div class="center jumbotron">
   <h2>
     <% if params[:search].blank?  %>
-      All users (<%= @users.count %>)
+      All Users (<%= @users.count %>)
     <%else %>
       Found => [
       <%= pluralize(@users.count, " ] user") %>
