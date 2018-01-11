@@ -26,7 +26,8 @@ class LineItemsController < ApplicationController
     @line_item.save!
 
     # redirect_to cart_path(@current_cart)
-    redirect_back(fallback_location: root_url)
+    # redirect_back(fallback_location: root_url)
+    # render layout: false
   end
 
   def destroy

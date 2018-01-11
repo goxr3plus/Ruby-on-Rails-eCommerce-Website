@@ -15,44 +15,47 @@ class="form-control" type="text"/> </div> <button type="submit" class="btn btn-p
     <%end %>
   </h2>
 
-  <!-- Search Bar -->
-  <div class="input-group" id="adv-search">
-    <%= form_tag(root_url, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search..." , class: "form-control" %>
-    <%= submit_tag "Search" , class: "form_submit"%>
+<!-- Search Bar -->
+<%= form_tag(root_url, :method => "get", id: "search-form") do %>
+<div class="input-group" id="adv-search">
+  <%= text_field_tag :search, params[:search], placeholder: "Search..." , class: "form-control" %>
+  <div class="input-group-btn">
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+    <span class="glyphicon glyphicon-search"></span>
   <% end %>
+  </div>
 </div>
+<% end %>
 
 <!-- Only Admin is allowed to create new products -->
 <% if logged_in? && current_user.admin? %>
-  <%= link_to new_product_path , class: "btn btn-success" , style: "margin-top:15px;" do %>
-  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-  Create New Product (Admin)
+<%= link_to new_product_path , class: "btn btn-success" , style: "margin-top:15px;" do %>
+<i class="glyphicon glyphicon-plus" style="color:black;"></i>
+Create New Product (Admin)
 <%end %>
 <% end %>
 </div>
 
 <%= will_paginate @products %>
 
-
 <ul class="users">
 <% if @products.present? %>
 
 <%= render @products %>
 <%# @products.each do |product| %>
-  <%#= render 'shared/product' , product: product %>
-    <%# end %>
-    </ul>
+<%#= render 'shared/product' , product: product %>
+  <%# end %>
+  </ul>
 
-    <%= will_paginate @products %>
+  <%= will_paginate @products %>
 
-  <% else %>
-    <p>
-      <br/><br/><hr/>
-      There are no products containing the term(s) => [
-      <strong><%= params[:search] %></strong>
-      ] .
+<% else %>
+  <p>
+    <br/><br/><hr/>
+    There are no products containing the term(s) => [
+    <strong><%= params[:search] %></strong>
+    ] .
 
-    </p>
-  <% end %>
-  <br>
+  </p>
+<% end %>
+<br>

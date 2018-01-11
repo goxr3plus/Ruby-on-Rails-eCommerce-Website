@@ -9,12 +9,18 @@
     <%end %>
   </h2>
 
+  <!-- Search Bar -->
+  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
   <div class="input-group" id="adv-search">
-    <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search by user name..." , class: "form-control" %>
-    <%= submit_tag "Search" , class: "form_submit"%>
+    <%= text_field_tag :search, params[:search], placeholder: "Search..." , class: "form-control" %>
+    <div class="input-group-btn">
+      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <span class="glyphicon glyphicon-search"></span>
+    <% end %>
+    </div>
+  </div>
   <% end %>
-</div>
+
 </div>
 
 <%= will_paginate %>
