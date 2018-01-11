@@ -2,9 +2,9 @@
 
   <%= link_to product do%>
   <% if product.picture? %>
-    <%= image_tag product.picture.url %>
+    <%= image_tag product.picture.url , size:"100x100"%>
   <% else %>
-    <%= image_tag "no_image.png", size:"150x150" %>
+    <%= image_tag "no_image.png", size:"100x100" %>
   <%end%>
 <%end %>
 

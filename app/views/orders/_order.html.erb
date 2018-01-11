@@ -1,28 +1,38 @@
 <h3>
+  <%= link_to ( gravatar_for  User.find_by(id:order.user_id), size: 100 ) ,  User.find_by(id:order.user_id) %>
   Order ID
   <%= order.id %>
   , User ID
   <%= order.user_id %></h3>
 <p>
   <strong>Name:</strong>
-  <%= User.find_by(id:order.user_id).name %></p>
-<p>
+  <%= User.find_by(id:order.user_id).name %>
+
+  ,
   <strong>Email:</strong>
-  <%= User.find_by(id:order.user_id).email %></p>
-<p>
-  <strong>Description:</strong>
-  <%= order.description %></p>
-<p>
+  <%= User.find_by(id:order.user_id).email %>
+
+  ,
   <strong>Pay_method:</strong>
   <%= order.pay_method %></p>
-<p>Line Items:
+<p>
+  <strong> Description</strong>
+  <div class="well well-sm"><%= order.description %></div>
 </p>
-<ul>
-  <% order.line_items.each do |item| %>
-    <li><%= item.quantity %>
+<p>
+  <h3>Total price:
+  <%= number_to_currency(@current_cart.sub_total) %></h3>
+</p>
+
+<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#<%= order.id %>">Show Items</button>
+<div id="<%= order.id %>" class="collapse">
+  <ul class="users">
+    <% @current_cart.line_items.each do |item| %>
+      <%= item.quantity %>
       x
-      <%= item.product.name %></li>
-  <% end %>
-  <br/>
-</ul>
+      <%= render 'shared/order_product' , product:item.product%>
+    <% end %>
+    <br/>
+  </ul>
+</div>
 <hr/>

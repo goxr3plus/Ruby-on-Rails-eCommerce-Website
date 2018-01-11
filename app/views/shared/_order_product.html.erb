@@ -1,0 +1,24 @@
+<li>
+
+  <%= link_to product do%>
+  <% if product.picture? %>
+    <%= image_tag product.picture.url , size:"64x64" %>
+  <% else %>
+    <%= image_tag "no_image.png", size:"64x64" %>
+  <%end%>
+<%end %>
+
+<strong>
+  Name :
+</strong>
+<%= product.name %>
+,<strong>
+  Description :
+</strong>
+<%= product.description %>
+<strong>
+  Price :
+</strong>
+<%= product.price %> $
+
+</li>
