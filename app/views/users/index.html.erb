@@ -1,19 +1,20 @@
 <% provide(:title, 'All users') %>
-
-  <h1>
+  <div class="center jumbotron">
+  <h2>
     <% if params[:search].nil? || params[:search].empty?  %>
       All users (<%= @users.count %>)
     <%else %>
       Found => [
       <%= pluralize(@users.count, " ] user") %>
     <%end %>
-  </h1>
+  </h2>
 
   <div class="input-group" id="adv-search">
     <%= form_tag(users_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search by user name..." , class: "form-control" %>
     <%= submit_tag "Search" , class: "form_submit"%>
   <% end %>
+</div>
 </div>
 
 <%= will_paginate %>
