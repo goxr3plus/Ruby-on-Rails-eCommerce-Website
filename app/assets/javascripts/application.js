@@ -17,3 +17,5 @@
 //= require_tree .
 //= require bootstrap
 //= require jquery.nicescroll
+
+// 1. Simple mode, it styles document scrollbar:

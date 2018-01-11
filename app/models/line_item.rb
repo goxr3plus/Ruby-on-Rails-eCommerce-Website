@@ -1,6 +1,6 @@
 class LineItem < ApplicationRecord
   belongs_to :product
-  belongs_to :cart
+  belongs_to :cart , dependent: :destroy
   # belongs_to :order
 
   # LOGIC
