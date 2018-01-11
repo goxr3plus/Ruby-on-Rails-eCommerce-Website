@@ -1,70 +1,56 @@
 <!-- Search Bar -->
 <div class="input-group" id="adv-search">
-  <%= form_tag(root_url,  :method => "get", id: "search-form") do %>
+  <%= form_tag(root_url, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search..." , class: "form-control" %>
-  <%= submit_tag "Search" , class: "form_submit" , type: "button"%>
-  <% end %>
-  <!-- <input type="text" class="form-control" placeholder="Search...."/>
-  <div class="input-group-btn">
-    <div class="btn-group" role="group">
-      <div class="dropdown dropdown-lg"> -->
-        <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-          <span class="caret"></span></button>
-        <div class="dropdown-menu dropdown-menu-right" role="menu">
-          <form class="form-horizontal" role="form">
-            <div class="form-group">
-              <label for="filter">Filter by</label>
-              <select class="form-control">
-                <option value="0">Featured</option>
-                <option value="1">Most popular</option>
-                <option value="2" selected="selected">Top rated</option>
-                <option value="3">Most commented</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="contain">Top Seller</label>
-              <input class="form-control" type="text"/>
-            </div>
-            <div class="form-group">
-              <label for="contain">Contains the words</label>
-              <input class="form-control" type="text"/>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-          </form>
-        </div> -->
-      <!-- </div>
-      <button type="button" class="btn btn-primary">
-        <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-    </div>
-  </div> -->
-</div>
-
-<!-- Only Admin is allowed to create new products -->
-<% if logged_in? && current_user.admin? %>
-  <%= link_to new_product_path , class: "btn btn-success" , style: "margin-top:15px;" do %>
-  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-  Create New Product
-<%end %>
+  <%= submit_tag "Search" , class: "form_submit"%>
 <% end %>
-
-<br/>
+<!-- <input type="text" class="form-control" placeholder="Search...."/> <div class="input-group-btn"> <div class="btn-group" role="group"> <div class="dropdown dropdown-lg"> -->
+<!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"> <span class="caret"></span></button> <div class="dropdown-menu dropdown-menu-right" role="menu"> <form class="form-horizontal"
+role="form"> <div class="form-group"> <label for="filter">Filter by</label> <select class="form-control"> <option value="0">Featured</option> <option value="1">Most popular</option> <option value="2" selected="selected">Top rated</option> <option
+value="3">Most commented</option> </select> </div> <div class="form-group"> <label for="contain">Top Seller</label> <input class="form-control" type="text"/> </div> <div class="form-group"> <label for="contain">Contains the words</label> <input
+class="form-control" type="text"/> </div> <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> </form> </div> -->
+<!-- </div> <button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button> </div> </div> -->
+</div>
 
 <%= will_paginate @products %>
 
+<div>
+  <!-- Only Admin is allowed to create new products -->
+  <% if logged_in? && current_user.admin? %>
+  <%= link_to new_product_path , class: "btn btn-success" , style: "margin-top:15px;" do %>
+  <i class="glyphicon glyphicon-plus" style="color:black;"></i>
+  Create New Product (Admin)
+  <%end %>
+  <% end %>
+
+  <h2>
+    <% if params[:search].nil? || params[:search].empty? %>
+      All Products (<%= @products.count %>)
+    <%else %>
+      Found => [
+      <%= pluralize(@products.count, " ] Products") %>
+    <%end %>
+  </h2>
+</div>
+
+
 <ul class="users">
-  <% if @products.present? %>
+<% if @products.present? %>
 
-    <%= render @products %>
-    <%# @products.each do |product| %>
-      <%#= render 'shared/product' , product: product %>
-        <%# end %>
-        </ul>
+<%= render @products %>
+<%# @products.each do |product| %>
+  <%#= render 'shared/product' , product: product %>
+    <%# end %>
+    </ul>
 
-        <%= will_paginate @products %>
+    <%= will_paginate @products %>
 
-      <% else %>
-        <p>There are no posts containing the term(s)
-          <%= params[:search] %>.</p>
-      <% end %>
-      <br>
+  <% else %>
+    <p>
+      <br /><br /><hr />
+      There are no products containing the term(s)
+      => [ <strong><%= params[:search] %></strong> ] .
+
+    </p>
+  <% end %>
+  <br>

@@ -1,17 +1,34 @@
 <% provide(:title, 'All users') %>
-  <h1>All users (<%= @users.count %>)</h1> 
 
-<div class="input-group" id="adv-search">
-  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search by user name..." , class: "form-control" %>
-  <%= submit_tag "Search" , class: "form_submit" , type: "button"%>
-<% end %>
+  <h1>
+    <% if params[:search].nil? || params[:search].empty?  %>
+      All users (<%= @users.count %>)
+    <%else %>
+      Found => [
+      <%= pluralize(@users.count, " ] user") %>
+    <%end %>
+  </h1>
+
+  <div class="input-group" id="adv-search">
+    <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search by user name..." , class: "form-control" %>
+    <%= submit_tag "Search" , class: "form_submit"%>
+  <% end %>
 </div>
 
 <%= will_paginate %>
 
-<ul class="users">
-<%= render @users %>
-</ul>
+<% if @users.present? %>
+  <ul class="users">
+    <%= render @users %>
+  </ul>
+<%else %>
+  <p>
+    <br/><br/><hr/>
+    There are no users containing the term(s) => [
+    <strong><%= params[:search] %></strong>
+    ] .
+  </p>
+<%end %>
 
 <%= will_paginate %>
