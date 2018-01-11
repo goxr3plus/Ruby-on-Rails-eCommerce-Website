@@ -17,21 +17,23 @@
       </div>
     <%end %>
     <%# else %><% end %>
-    <div class="center jumbotron">
-      <h2>
-        <%= link_to image_tag("logo.jpg",size:"52x42" , alt: "Shop logo"), 'http://rubyonrails.org/' %>
-        Welcome to dopeshop!
+    <% if !logged_in? %>
+      <div class="center jumbotron">
+        <h2>
+          <%= link_to image_tag("logo.jpg",size:"52x42" , alt: "Shop logo"), 'http://rubyonrails.org/' %>
+          Welcome to dopeshop!
 
-      </h2>
+        </h2>
 
-      <% if !logged_in? %>
-        <%= link_to "Log in", login_path, class: "btn btn-lg btn-success" %>
-        <strong >
-          or
-        </strong>
-        <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
-      <% end %>
-    </div>
+        <% if !logged_in? %>
+          <%= link_to "Log in", login_path, class: "btn btn-lg btn-success" %>
+          <strong >
+            or
+          </strong>
+          <%= link_to "Sign up", signup_path, class: "btn btn-lg btn-primary" %>
+        <% end %>
+      </div>
+    <%end %>
 
     <%= render 'shared/products' %>
     <%# end %>
