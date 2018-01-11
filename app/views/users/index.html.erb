@@ -1,7 +1,7 @@
 <% provide(:title, 'All users') %>
   <div class="center jumbotron">
   <h2>
-    <% if params[:search].nil? || params[:search].empty?  %>
+    <% if params[:search].blank?  %>
       All users (<%= @users.count %>)
     <%else %>
       Found => [

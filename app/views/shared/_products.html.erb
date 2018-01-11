@@ -7,7 +7,7 @@ class="form-control" type="text"/> </div> <button type="submit" class="btn btn-p
 
 <div class="center jumbotron">
   <h2>
-    <% if params[:search].nil? || params[:search].empty?  %>
+    <% if params[:search].blank?  %>
       All Orders (<%= @products.count %>)
     <%else %>
       Found => [
