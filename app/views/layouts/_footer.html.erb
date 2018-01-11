@@ -1,18 +1,23 @@
-<footer class="footer navbar-inverse navbar-fixed-bottom">
-  <small>
-    Created by <b> <a href="https://github.com/goxr3plus/Ruby-on-Rails-eCommerce-Website">GOXR3PLUS STUDIO</a> </b> following
-    <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-    by
-    <a href="http://www.michaelhartl.com/">Michael Hartl</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About", about_path %></li>
-      <li><%= link_to "Help", helf_path %></li>
-      <li><%= link_to "Contact", "https://github.com/goxr3plus/Ruby-on-Rails-eCommerce-Website" , target:"_blank" %></li>
-      <!-- <li>
-        <a href="http://news.railstutorial.org/">News</a>
-      </li> -->
-    </ul>
-  </nav>
+<nav class="navbar  navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myFooter">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <!-- On big screens -->
+    <div class="collapse navbar-collapse" id="myFooter">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Help", helf_path %></li>
+        <li><%= link_to "Contact", "https://github.com/goxr3plus/Ruby-on-Rails-eCommerce-Website" , target:"_blank" %></li>
+
+      </ul>
+    </div>
+
+  </div>
+</nav>
 </footer>
