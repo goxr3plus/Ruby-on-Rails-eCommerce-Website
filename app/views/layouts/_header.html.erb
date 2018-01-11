@@ -1,8 +1,16 @@
-<header class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <nav>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <%= link_to image_tag("logo2.png",size:"52x42" , alt: "Rails logo"), 'http://rubyonrails.org/' %>
       <%= link_to "Dope Shop 2018 ~ ", root_path, id: "logo" %>
+    </div>
+    <!-- On big screens -->
+    <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <!-- Search Bar -->
         <li></li>
@@ -26,9 +34,12 @@
         <li><%= link_to "#", { :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'data-placement' => 'top', :title => 'Account', 'data-original-title' => 'Account' } do %>
           <!-- <i class="glyphicon glyphicon-user"></i> -->
           <i class="glyphicon glyphicon-shopping-cart" style="color:#FFD700"></i>
-          Basket <span class="badge badge-pill badge-warning"><%= @current_cart.line_items.count %></span> |
+          Basket
+          <span class="badge badge-pill badge-warning"><%= @current_cart.line_items.count %></span>
+          |
           <i class="glyphicon glyphicon-eye-open" style="color:firebrick"></i>
-          Orders <span class="badge badge-pill badge-warning"><%= @current_user.orders.count %></span>
+          Orders
+          <span class="badge badge-pill badge-warning"><%= @current_user.orders.count %></span>
           <b class="caret"></b>
         <% end %>
 
@@ -98,5 +109,5 @@ Log In
 <% end %>
 
 </ul>
-</nav>
-</div></header>
+</div>
+</div></nav>
