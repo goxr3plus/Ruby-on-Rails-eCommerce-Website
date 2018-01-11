@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     Cart.destroy(session[:cart_id])
     session[:cart_id] = nil
     redirect_to orders_path
-    byebug
+    # byebug
 end
 
   private

@@ -10,8 +10,8 @@ class StaticPagesController < ApplicationController
       @products = Product.search(params[:search]).order('created_at ASC').paginate(page: params[:page], per_page: 5)
     else
       @products = Product.all.order('created_at ASC').paginate(page: params[:page], per_page: 5)
+    end
   end
-   end
 
   def products; end
 

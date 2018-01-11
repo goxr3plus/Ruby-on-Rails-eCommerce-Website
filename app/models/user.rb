@@ -79,7 +79,9 @@ class User < ApplicationRecord
     Micropost.where("user_id = ?", id)
   end
 
-    private
+  def self.search(search)
+    where('name LIKE ?', "%#{search}%")
+  end
 
   private
 
