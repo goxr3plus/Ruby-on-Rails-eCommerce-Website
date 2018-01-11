@@ -2,15 +2,22 @@
   <h2>Orders</h2>
 </div>
 
+<!-- <div class="input-group" id="adv-search">
+  <%= form_tag(orders_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search by user email..." , class: "form-control" %>
+  <%= submit_tag "Search" , class: "form_submit" , type: "button"%>
+<% end %>
+</div> -->
+
 <% @orders.each do |order| %>
 
-  <% if @current_user.admin? %>
+<% if @current_user.admin? %>
 
-    <%= render 'order' , :order => order%>
+  <%= render 'order' , :order => order%>
 
   <% elsif order.user_id == @current_user.id %>
 
-      <%= render 'order' , :order => order%>
+    <%= render 'order' , :order => order%>
 
   <%end%>
 <% end %>
