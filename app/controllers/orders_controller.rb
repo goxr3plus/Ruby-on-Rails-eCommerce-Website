@@ -50,13 +50,12 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
-    flash[:info] = 'Found product to destroy'
-    # @order.destroy
-    # respond_to do |format|
-    #   format.html { redirect_to orders_path, notice: 'Order was successfully destroyed.' }
-    #   format.json { head :no_content }
-    #   flash[:info] = 'Order was successfully destroyed.'
-    # end
+    @order.destroy
+    respond_to do |format|
+      format.html { redirect_to orders_path }
+      format.json { head :no_content }
+      flash[:info] = 'Order was successfully destroyed.'
+    end
   end
 
   def edit
@@ -64,7 +63,8 @@ class OrdersController < ApplicationController
   end
 
   def update
-     @order = Order.update(order_params)
+     @order = Order.find(params[:id])
+     @order.update(order_params)
      redirect_to orders_path
   end
 

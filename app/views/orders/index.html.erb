@@ -1,7 +1,12 @@
 <div class="center jumbotron">
   <h2>
     <% if params[:search].blank? %>
-      All Orders (<%= @orders.count %>)
+
+      <%if current_user.admin? %>
+        ADMIN --- All Orders (<%= @orders.count %>)
+      <%else%>
+        USER --- All Orders (<%= @current_user.orders.count %>)
+      <%end%>
     <%else %>
       Found => [
       <%= pluralize(@orders.count, " ] Order") %>

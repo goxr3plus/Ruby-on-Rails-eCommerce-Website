@@ -39,7 +39,9 @@
           |
           <i class="glyphicon glyphicon-eye-open" style="color:firebrick"></i>
           Orders
-          <span class="badge badge-pill badge-warning"><%= @current_user.orders.count %></span>
+          <span class="badge badge-pill badge-warning">
+            (<%= @current_user.orders.count %>) Admin / (<%= Order.count%>) Total
+          </span>
           <b class="caret"></b>
         <% end %>
 
