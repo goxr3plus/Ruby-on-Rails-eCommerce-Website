@@ -2,11 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-  before_action :current_cart
+  before_action :set_cart
 
   private
 
-  def current_cart
+  def set_cart
     if session[:cart_id]
       cart = Cart.find_by(id: session[:cart_id])
       if cart.present?
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     end
 
     if session[:cart_id].nil?
-      @current_cart = Cart.create
+      @current_cart = Cart.create(:user_id => nil)
       session[:cart_id] = @current_cart.id
     end
   end

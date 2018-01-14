@@ -21,13 +21,13 @@
 </p>
 <p>
   <h3>Total price:
-  <%= number_to_currency(@current_cart.sub_total) %></h3>
+  <%= number_to_currency(order.sub_total) %></h3>
 </p>
 
 <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#<%= order.id %>">Show Items</button>
 <div id="<%= order.id %>" class="collapse">
   <ul class="users">
-    <% @current_cart.line_items.each do |item| %>
+    <% order.line_items.each do |item| %>
       <%= item.quantity %>
       x
       <%= render 'shared/order_product' , product:item.product%>

@@ -23,8 +23,10 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.update(user_id: @current_user.id)
     @current_cart.line_items.each do |item|
-      @order.line_items << item
       item.cart_id = nil
+      item.order_id = @order.id
+      item.save
+      @order.line_items << item
     end
     @order.save!
     Cart.destroy(session[:cart_id])

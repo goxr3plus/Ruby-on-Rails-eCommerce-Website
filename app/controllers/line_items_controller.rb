@@ -2,8 +2,6 @@ class LineItemsController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy add_quantity reduce_quantity]
 
   def create
-    # if(@order.nil?)
-    #   @order = Order.new(order_params)
 
     # Find associated product and current cart
     chosen_product = Product.find(params[:product_id])
@@ -19,6 +17,7 @@ class LineItemsController < ApplicationController
       @line_item = LineItem.new
       @line_item.cart = current_cart
       @line_item.product = chosen_product
+      # @line_item.order = Order.first
       @line_item.quantity = 1
     end
 
