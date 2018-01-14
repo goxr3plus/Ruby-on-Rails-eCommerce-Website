@@ -1,0 +1,13 @@
+<h3>
+  <%= link_to ( gravatar_for  User.find_by(id:order.user_id), size: 100 ) ,  User.find_by(id:order.user_id) %>
+  Order ID
+  <%= order.id %>
+  , User ID
+  <%= order.user_id %></h3>
+<p>
+  <strong>Name:</strong>
+  <%= User.find_by(id:order.user_id).name %>
+
+  ,
+  <strong>Email:</strong>
+  <%= User.find_by(id:order.user_id).email %>

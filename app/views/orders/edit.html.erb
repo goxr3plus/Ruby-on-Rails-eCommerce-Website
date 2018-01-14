@@ -1,0 +1,35 @@
+<%= render 'order2',:order => @order %>
+
+<div class="center jumbotron">
+  <%= form_for(@order) do |f| %>
+  <p style="margin-top:25px">
+    <%= f.label :pay_method %><br>
+    <%= f.text_field :pay_method, required: true, autofocus: true %>
+  </p>
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.submit "Update Order"%>
+  </p>
+
+<% end %>
+
+<p>
+  <h3>Total price:
+  <%= number_to_currency(@order.sub_total) %></h3>
+</p>
+
+<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#<%= @order.id %>">Show Items</button>
+<div id="<%= @order.id %>" class="collapse">
+  <ul class="users">
+    <% @order.line_items.each do |item| %>
+      <%= item.quantity %>
+      x
+      <%= render 'shared/order_product' , product:item.product%>
+    <% end %>
+    <br/>
+  </ul>
+</div>
+</div>

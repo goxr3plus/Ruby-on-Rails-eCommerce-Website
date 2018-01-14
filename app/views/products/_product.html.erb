@@ -36,10 +36,16 @@ $
 
     <!-- Only Admin is allowed to modify products -->
     <% if logged_in? && current_user.admin? %>
-      <%= link_to 'Edit', edit_product_path(product) %>
-      or
-      <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to edit_product_path(product) do %>
+      <i class="glyphicon glyphicon-pencil" style="color:darkgray"></i>
+      Edit
     <% end %>
-
+    or
+    <!-- Basket -->
+    <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="glyphicon glyphicon-fire" style="color:firebrick"></i>
+    Destroy
+    <% end %>
+    <% end %>
   </p>
 </li>

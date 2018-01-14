@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user, only: %i[index show new create]
+  before_action :user_is_admin, only: %i[destroy edit]
 
   def index
     @orders = Order.all
@@ -33,7 +34,39 @@ class OrdersController < ApplicationController
     session[:cart_id] = nil
     redirect_to orders_path
     # byebug
-end
+  end
+
+  # def destroy
+  #   respond_to do |format|
+  #     if @order.destroy!
+  #      format.html { redirect_to products_url }
+  #      format.json { head :no_content }
+  #      flash[:info] = 'Order was successfully destroyed.'
+  #     else
+  #       flash[:info] = 'Error destroying the order'
+  #     end
+  #   end
+  # end
+
+  def destroy
+    @order = Order.find(params[:id])
+    flash[:info] = 'Found product to destroy'
+    # @order.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to orders_path, notice: 'Order was successfully destroyed.' }
+    #   format.json { head :no_content }
+    #   flash[:info] = 'Order was successfully destroyed.'
+    # end
+  end
+
+  def edit
+    @order = Order.find(params[:id])
+  end
+
+  def update
+     @order = Order.update(order_params)
+     redirect_to orders_path
+  end
 
   private
 
