@@ -2,7 +2,6 @@ class LineItemsController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy add_quantity reduce_quantity]
 
   def create
-
     # Find associated product and current cart
     chosen_product = Product.find(params[:product_id])
     current_cart = @current_cart
@@ -20,13 +19,19 @@ class LineItemsController < ApplicationController
       # @line_item.order = Order.first
       @line_item.quantity = 1
     end
-
-    # Save and redirect to cart show path
-    @line_item.save!
-
+    
     # redirect_to cart_path(@current_cart)
     # redirect_back(fallback_location: root_url)
-    # render layout: false
+
+    respond_to do |format|
+     if @line_item.save!
+       format.js
+       # below is a second way without creating ``
+       # format.js { render :js => "alert('hi')" }
+     else
+       format.html { render :new , notice: 'Error adding product to basket!' }
+     end
+   end
   end
 
   def destroy

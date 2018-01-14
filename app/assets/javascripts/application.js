@@ -18,4 +18,14 @@
 //= require bootstrap
 //= require jquery.nicescroll
 
-// 1. Simple mode, it styles document scrollbar:
+// $(".add-to-basket").click(function(){
+//   var productId = $(this).attr("productID");
+//   $.post('/line_items_controller', {id: productId}).done(function(response){
+//       if (response.status == "created"){
+//        $('total_cart_items_badge').text(response.line_items_count);
+//       }
+//       else{
+//          //your error handler
+//       }
+//   });
+// });

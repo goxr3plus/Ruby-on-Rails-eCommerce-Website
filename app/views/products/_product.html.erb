@@ -19,26 +19,27 @@
 <strong>
   Price :
 </strong>
-<%= product.price %> $
+<%= product.price %>
+$
 
 <p>
   <%# if logged_in? %>
     <!-- Add to Basket -->
-    <%=button_to line_items_path(:product_id => product.id) , class: "btn btn-warning" , style: "margin-top:15px;" do %>
+    <%=button_to line_items_path(:product_id => product.id), :remote => true , class: "btn btn-warning" , style: "margin-top:15px;" , params:{productID: product.id} do %>
     <i class="glyphicon glyphicon-plus" style="color:black;"></i>
     Add to Basket
   <% end %>
-<%# end %>
-</p>
+  <%# end %>
+  </p>
 
-<p>
+  <p>
 
-<!-- Only Admin is allowed to modify products -->
-<% if logged_in? && current_user.admin? %>
-  <%= link_to 'Edit', edit_product_path(product) %>
-  or
-  <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+    <!-- Only Admin is allowed to modify products -->
+    <% if logged_in? && current_user.admin? %>
+      <%= link_to 'Edit', edit_product_path(product) %>
+      or
+      <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
 
-</p>
+  </p>
 </li>
