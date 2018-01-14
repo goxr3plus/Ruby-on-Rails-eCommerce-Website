@@ -20,9 +20,7 @@ Rails.application.routes.draw do
   resources :microposts, only: %i[create destroy]
 
   # About Shopping cart
-  # get 'carts/:id' => 'carts#show', as: 'cart'
   get 'carts/:id' => 'carts#show', as: 'cart'
-  # get 'carts' => 'carts#show', as: 'cart'
   delete 'carts/:id' => 'carts#destroy'
 
   post 'line_items/:id/add' => 'line_items#add_quantity', as: 'line_item_add'

@@ -2,8 +2,8 @@ class LineItemsController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy add_quantity reduce_quantity]
 
   def create
-   # if(@order.nil?)
-   #   @order = Order.new(order_params)
+    # if(@order.nil?)
+    #   @order = Order.new(order_params)
 
     # Find associated product and current cart
     chosen_product = Product.find(params[:product_id])
@@ -45,9 +45,13 @@ class LineItemsController < ApplicationController
 
   def reduce_quantity
     @line_item = LineItem.find(params[:id])
-    @line_item.quantity -= 1 if @line_item.quantity > 1
-    @line_item.save
-    redirect_to cart_path(@current_cart)
+    if @line_item.quantity > 1
+      @line_item.quantity -= 1
+      @line_item.save
+      redirect_to cart_path(@current_cart)
+    elsif @line_item.quantity == 1
+      destroy
+    end
   end
 
   private
