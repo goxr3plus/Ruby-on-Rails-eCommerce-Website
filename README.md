@@ -2,6 +2,13 @@
 
 #### >>>>>>>----------------------- CURRENTLY UNDER DEVELOPMENT-------------------<<<<<<<<<<
 
+Hello :slightly_smiling_face: this is the link of the E-Commerce website i made , it needs a little bit more work but is almost ready . It is also mobile friendly . https://dopeshop.herokuapp.com/ 
+
+I have added some accounts just for checking , so to log in as admin -> ```admin@dopeshop.com``` and ```123123``` , 
+to log in as ordinary user -> ```noadmin@dopeshop.com``` and ```123123```
+
+Of course you can create as many ordinary users as you want
+
 
 # View the website on Heroku
 
@@ -13,6 +20,7 @@
   - User Authentication using  (BCrypt gem)
   - ADMIN and User roles 
   - Products icons saved on Google Cloud or Amazon Cloud
+  - Email Account Activation
   - Beautiful Search Bars
   - Products Pagination 
   - Users Pagination
@@ -36,8 +44,6 @@ Images from version V1.0
 
 
 ---
-
-
 
 # Ruby on Rails Tutorial sample application
 
