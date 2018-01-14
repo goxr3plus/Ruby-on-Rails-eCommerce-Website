@@ -23,9 +23,21 @@
 - _**Working on it**_
   - - Users can follow other users and get feed ( under development )
 
+Images from version V1.0
+
+
+| Home  | Users
+|:-:|:-:|
+| ![First](https://user-images.githubusercontent.com/20374208/34919202-10741386-f968-11e7-8b2f-ca622ee25b9f.png) | ![Sec](https://user-images.githubusercontent.com/20374208/34919203-122d1678-f968-11e7-9d14-833a4b0ec6d5.png) |
+
+| Orders  | Articles
+|:-:|:-:|
+| ![First](https://user-images.githubusercontent.com/20374208/34919204-13275106-f968-11e7-9ba3-316eb500e202.png) | ![Sec](https://user-images.githubusercontent.com/20374208/34919221-680184e4-f968-11e7-9878-0a3dd9f3f501.png) |
 
 
 ---
+
+
 
 # Ruby on Rails Tutorial sample application
 
