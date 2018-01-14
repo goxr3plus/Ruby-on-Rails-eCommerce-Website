@@ -8,6 +8,22 @@
 -> https://dopeshop.herokuapp.com/
 
 
+## Features
+- **App**
+  - User Authentication using  (BCrypt gem)
+  - ADMIN and User roles 
+  - Products icons saved on Google Cloud or Amazon Cloud
+  - Beautiful Search Bars
+  - Products Pagination 
+  - Users Pagination
+  - Users can post articles
+  - Proceed products to cart
+  - Make Orders
+  - Edit , destroy orders (Admin)
+- _**Working on it**_
+  - - Users can follow other users and get feed ( under development )
+
+
 
 ---
 
@@ -38,7 +54,7 @@ Next, migrate the database:
 $ rails db:migrate
 ```
 
-Finally, run the test suite to verify that everything is working correctly:
+Finally, run the test suite to verify that everything is working correctly: THE TESTS FAIL (Because i didn't corrected them all loool! )
 
 ```
 $ rails test
