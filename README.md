@@ -21,15 +21,19 @@ Of course you can create as many ordinary users as you want
   - ADMIN and User roles 
   - Products icons saved on Google Cloud or Amazon Cloud
   - Email Account Activation
+  - Users can follow other users
+  - Twitter like feed mechenism for followers
   - Beautiful Search Bars
-  - Products Pagination 
-  - Users Pagination
+  - Beautiful Paginations
   - Users can post articles
   - Proceed products to cart
   - Make Orders
   - Edit , destroy orders (Admin)
 - _**Working on it**_
-  - - Users can follow other users and get feed ( under development )
+  - - More Ajax through the site
+  - - Implementing tickets
+  - - Implementing shipping
+  - - Added State Maching
 
 Images from version V1.0
 
