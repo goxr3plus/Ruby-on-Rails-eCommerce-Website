@@ -30,10 +30,10 @@ Of course you can create as many ordinary users as you want
   - Make Orders
   - Edit , destroy orders (Admin)
 - _**Working on it**_
-  - - More Ajax through the site
+  - - Implement State Machine
+  - - Use more Ajax requests
   - - Implementing tickets
   - - Implementing shipping
-  - - Added State Maching
 
 Images from version V1.0
 
