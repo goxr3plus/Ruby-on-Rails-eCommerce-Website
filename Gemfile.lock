@@ -244,6 +244,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gravatar_image_tag (1.2.0)
     guard (2.13.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, <= 4.0)
@@ -424,6 +425,7 @@ DEPENDENCIES
   faker (~> 1.8, >= 1.8.7)
   figaro
   fog
+  gravatar_image_tag
   guard (= 2.13.0)
   guard-minitest (= 2.4.4)
   jbuilder (= 2.7.0)

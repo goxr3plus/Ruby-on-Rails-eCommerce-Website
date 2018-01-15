@@ -20,6 +20,7 @@ gem 'jbuilder',     '2.7.0'
 gem 'email_validator', '~> 1.6'
 gem 'figaro'
 gem 'nicescroll-rails', '~> 3.5', '>= 3.5.4.1'
+gem 'gravatar_image_tag'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

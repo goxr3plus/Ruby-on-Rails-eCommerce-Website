@@ -6,7 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to image_tag("logo2.png",size:"52x42" , alt: "Rails logo"), root_path %>
+      <%= link_to image_tag("logo.png",size:"52x52" , alt: "Rails logo"), root_path %>
       <%= link_to "Dope Shop", root_path, id: "logo" %>
     </div>
     <!-- On big screens -->
@@ -30,71 +30,60 @@
         <% end %>
       </li>
 
-      <li class="dropdown">
-        <li><%= link_to "#", { :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'data-placement' => 'top', :title => 'Account', 'data-original-title' => 'Account' } do %>
-          <!-- <i class="glyphicon glyphicon-user"></i> -->
-          <i class="glyphicon glyphicon-shopping-cart" style="color:#FFD700"></i>
-          Basket
-          <span class="badge badge-pill badge-warning" id="total_cart_items_badge"><%= @current_cart.line_items.count %></span>
-          |
-          <i class="glyphicon glyphicon-eye-open" style="color:firebrick"></i>
-          Orders
-          <span class="badge badge-pill badge-warning">
-            (<%= @current_user.orders.count %>) Admin / (<%= Order.count%>) Total
-          </span>
-          <b class="caret"></b>
-        <% end %>
-
-        <ul class="dropdown-menu">
-
-          <!-- Basket -->
-          <li><%= link_to cart_path(@current_cart) do %>
-            <i class="glyphicon glyphicon-shopping-cart" style="color:#FFD700"></i>
-            Basket
-          <% end %>
-        </li>
-
-        <!-- Orders -->
-        <li><%= link_to orders_path do %>
-          <i class="glyphicon glyphicon-eye-open" style="color:firebrick"></i>
-          Orders
-        <% end %>
-      </li>
-
+      <!-- Cart -->
+      <li><%= link_to cart_path(@current_cart) do %>
+        <span class="badge " id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)
+          <i class="glyphicon glyphicon-shopping-cart" style="color:#FFD700; font-size:15px"></i>
+          Cart
+        </span>
+      <% end %>
     </li>
-  </ul>
-</li>
 
-<!-- Account -->
-<li class="dropdown">
-  <li><%= link_to "#", { :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'data-placement' => 'top', :title => 'Account', 'data-original-title' => 'Account' } do %>
-    <!-- <i class="glyphicon glyphicon-user"></i> -->
-    <%= gravatar_for @current_user, size: 20 %>
-    Account
-    <b class="caret"></b>
-  <% end %>
+    <!-- Orders -->
+    <li><%= link_to orders_path do %>
+      Orders
+      <span class="badge ">
+        <%if @current_user.admin? %>
+          (<%= @current_user.orders.count %>) Admin / (<%= Order.count%>) Total
+        <% else %>
+          <%= @current_user.orders.count %>
+        <% end %>
+        <i class="glyphicon glyphicon-road" style="color:black"></i>
+      </span>
 
-  <!-- Profile -->
-  <ul class="dropdown-menu">
-    <li><%= link_to current_user do %>
-      <i class="glyphicon glyphicon-eye-open"></i>
-      Profile
     <% end %>
   </li>
-  <!-- Setting -->
-  <li><%= link_to edit_user_path(current_user) do %>
-    <i class="glyphicon glyphicon-cog"></i>
-    Settings
-  <% end %>
-</li>
-<!-- Logout -->
-<li class="divider"></li>
-<li>
-  <li><%= link_to logout_path, method: :delete do %>
-    <i class="glyphicon glyphicon-off"></i>
-    Log out
-  <% end %>
-</li>
+
+  <!-- Account -->
+  <li class="dropdown">
+    <li><%= link_to "#", { :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'data-placement' => 'top', :title => 'Account', 'data-original-title' => 'Account' } do %>
+      <!-- <i class="glyphicon glyphicon-user"></i> -->
+      <%= gravatar_for @current_user, size: 20 %>
+      Account
+      <b class="caret"></b>
+    <% end %>
+
+    <!-- Profile -->
+    <ul class="dropdown-menu">
+      <li><%= link_to current_user do %>
+        <i class="glyphicon glyphicon-eye-open"></i>
+        Profile
+      <% end %>
+    </li>
+    <!-- Setting -->
+    <li><%= link_to edit_user_path(current_user) do %>
+      <i class="glyphicon glyphicon-cog"></i>
+      Settings
+    <% end %>
+  </li>
+  <!-- Logout -->
+  <li class="divider"></li>
+  <li>
+    <li><%= link_to logout_path, method: :delete do %>
+      <i class="glyphicon glyphicon-off"></i>
+      Log out
+    <% end %>
+  </li>
 </li>
 </ul>
 </li>
@@ -112,4 +101,5 @@ Log In
 
 </ul>
 </div>
-</div></nav>
+</div>
+</nav>
