@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 20180115122408) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "price", default: "0.0"
     t.string "picture"
+    t.decimal "price", default: "0.0"
   end
 
   create_table "relationships", force: :cascade do |t|

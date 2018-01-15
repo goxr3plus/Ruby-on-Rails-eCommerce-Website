@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update destroy]
+  before_action :logged_in_user, only: %i[index edit update destroy following followers]
   before_action :correct_user, only: %i[edit update]
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.where(activated: true) #.paginate(page: params[:page], per_page: 6)
+    @users = User.where(activated: true) # .paginate(page: params[:page], per_page: 6)
     if params[:search]
       @users = User.search(params[:search]).order('created_at ASC').paginate(page: params[:page], per_page: 5)
     else
@@ -59,6 +59,22 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = 'User deleted'
     redirect_back(fallback_location: users_url)
+  end
+
+  def following
+    @title = 'Following'
+    @user  = User.find(params[:id])
+    @users = @user.following.paginate(page: params[:page], per_page: 10)
+    @users2 = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @title = 'Followers'
+    @user  = User.find(params[:id])
+    @users = @user.followers.paginate(page: params[:page], per_page: 10)
+    @users2 = @user.followers
+    render 'show_follow'
   end
 
   private
