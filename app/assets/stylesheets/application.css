@@ -22,11 +22,11 @@
 
 
 /* Global Styles */
-*, *:  before, *:after {
+/* *, *:  before, *:after {
     -webkit-box-sizing: border-box !important;
     -moz-box-sizing: border-box !important;
     box-sizing: border-box !important;
-}
+} */
 body {
     width: 100%;
     height: 100%;
