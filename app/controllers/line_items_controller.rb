@@ -19,32 +19,32 @@ class LineItemsController < ApplicationController
       # @line_item.order = Order.first
       @line_item.quantity = 1
     end
-    
+
     # redirect_to cart_path(@current_cart)
     # redirect_back(fallback_location: root_url)
 
     respond_to do |format|
-     if @line_item.save!
-       format.js
-       # below is a second way without creating ``
-       # format.js { render :js => "alert('hi')" }
-     else
-       format.html { render :new , notice: 'Error adding product to basket!' }
-     end
-   end
+      if @line_item.save!
+        format.js
+        # below is a second way without creating ``
+        # format.js { render :js => "alert('hi')" }
+      else
+        format.html { render :new, notice: 'Error adding product to basket!' }
+      end
+    end
   end
 
   def destroy
     @line_item = LineItem.find(params[:id])
     @line_item.destroy
-    redirect_to cart_path(@current_cart)
+    redirect_back(fallback_location: @current_cart)
   end
 
   def add_quantity
     @line_item = LineItem.find(params[:id])
     @line_item.quantity += 1
     @line_item.save
-    redirect_to cart_path(@current_cart)
+    redirect_back(fallback_location: @current_cart)
   end
 
   def reduce_quantity
@@ -52,7 +52,7 @@ class LineItemsController < ApplicationController
     if @line_item.quantity > 1
       @line_item.quantity -= 1
       @line_item.save
-      redirect_to cart_path(@current_cart)
+      redirect_back(fallback_location: @current_cart)
     elsif @line_item.quantity == 1
       destroy
     end

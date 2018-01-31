@@ -32,9 +32,10 @@
 
       <!-- Cart -->
       <li><%= link_to cart_path(@current_cart) do %>
-        <span class="badge " id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)
+        <span class="badge ">
           <i class="glyphicon glyphicon-shopping-cart" style="color:#FFD700; font-size:15px"></i>
           Cart
+          <i id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)</i>
         </span>
       <% end %>
     </li>
