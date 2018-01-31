@@ -1,19 +1,277 @@
-<nav class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to image_tag("logo.png",size:"52x52" , alt: "Rails logo"), root_path %>
-      <%= link_to "Dope Shop", root_path, id: "logo" %>
+      <a class="nav-btn btn-dark btn-lg accordion-toggle pull-left" title="Follow Us" role="tab" id="social-collapse" data-toggle="collapse" data-parent="#accordion" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></a>
+      <!-- <a id="menu-toggle" href="#" class="nav-btn btn-dark btn-lg toggle"> <i class="fa fa-bars" style="color:#fff;"></i> </a> -->
+      <a id="to-top" class="btn btn-lg btn-inverse" href="#top">
+        <span class="sr-only">Toggle to Top Navigation</span>
+        <i class="fa fa-chevron-up"></i>
+      </a>
     </div>
-    <!-- On big screens -->
-    <div class="collapse navbar-collapse" id="myNavbar">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse js-navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-left">
+        <a class="navbar-brand" href="#">
+          <%= link_to "Dope Shop", root_path, id: "logo" %>
+          <%= link_to image_tag("logo.png",size:"52x52" , alt: "Rails logo"), root_path %>
+        </a>
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Men
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu mega-dropdown-menu">
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Men Collection</li>
+                <div id="menCollection" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
+                      <h4>
+                        <small>Summer dress floral prints</small>
+                      </h4>
+                      <button class="btn btn-primary" type="button">49,99 €</button>
+                      <button href="#" class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        Add to Wishlist</button>
+                    </div>
+                    <!-- End Item -->
+                    <div class="item">
+                      <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
+                      <h4>
+                        <small>Gold sandals with shiny touch</small>
+                      </h4>
+                      <button class="btn btn-primary" type="button">9,99 €</button>
+                      <button href="#" class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        Add to Wishlist</button>
+                    </div>
+                    <!-- End Item -->
+                    <div class="item">
+                      <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
+                      <h4>
+                        <small>Denin jacket stamped</small>
+                      </h4>
+                      <button class="btn btn-primary" type="button">49,99 €</button>
+                      <button href="#" class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        Add to Wishlist</button>
+                    </div>
+                    <!-- End Item -->
+                  </div>
+                  <!-- End Carousel Inner -->
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#menCollection" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#menCollection" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+                <!-- /.carousel -->
+                <li class="divider"></li>
+                <li>
+                  <a href="#">View all Collection
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Features</li>
+                <li>
+                  <a href="#">Auto Carousel</a>
+                </li>
+                <li>
+                  <a href="#">Carousel Control</a>
+                </li>
+                <li>
+                  <a href="#">Left & Right Navigation</a>
+                </li>
+                <li>
+                  <a href="#">Four Columns Grid</a>
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Fonts</li>
+                <li>
+                  <a href="#">Glyphicon</a>
+                </li>
+                <li>
+                  <a href="#">Google Fonts</a>
+                </li>
+              </ul>
+            </li>
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Plus</li>
+                <li>
+                  <a href="#">Navbar Inverse</a>
+                </li>
+                <li>
+                  <a href="#">Pull Right Elements</a>
+                </li>
+                <li>
+                  <a href="#">Coloured Headers</a>
+                </li>
+                <li>
+                  <a href="#">Primary Buttons & Default</a>
+                </li>
+              </ul>
+            </li>
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Much more</li>
+                <li>
+                  <a href="#">Easy to Customize</a>
+                </li>
+                <li>
+                  <a href="#">Calls to action</a>
+                </li>
+                <li>
+                  <a href="#">Custom Fonts</a>
+                </li>
+                <li>
+                  <a href="#">Slide down on Hover</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown mega-dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Women
+            <span class="caret"></span></a>
+          <ul class="dropdown-menu mega-dropdown-menu">
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Features</li>
+                <li>
+                  <a href="#">Auto Carousel</a>
+                </li>
+                <li>
+                  <a href="#">Carousel Control</a>
+                </li>
+                <li>
+                  <a href="#">Left & Right Navigation</a>
+                </li>
+                <li>
+                  <a href="#">Four Columns Grid</a>
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Fonts</li>
+                <li>
+                  <a href="#">Glyphicon</a>
+                </li>
+                <li>
+                  <a href="#">Google Fonts</a>
+                </li>
+              </ul>
+            </li>
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Plus</li>
+                <li>
+                  <a href="#">Navbar Inverse</a>
+                </li>
+                <li>
+                  <a href="#">Pull Right Elements</a>
+                </li>
+                <li>
+                  <a href="#">Coloured Headers</a>
+                </li>
+                <li>
+                  <a href="#">Primary Buttons & Default</a>
+                </li>
+              </ul>
+            </li>
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Much more</li>
+                <li>
+                  <a href="#">Easy to Customize</a>
+                </li>
+                <li>
+                  <a href="#">Calls to action</a>
+                </li>
+                <li>
+                  <a href="#">Custom Fonts</a>
+                </li>
+                <li>
+                  <a href="#">Slide down on Hover</a>
+                </li>
+              </ul>
+            </li>
+            <li class="col-sm-3">
+              <ul>
+                <li class="dropdown-header">Women Collection</li>
+                <div id="womenCollection" class="carousel slide" data-ride="carousel">
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
+                      <h4>
+                        <small>Summer dress floral prints</small>
+                      </h4>
+                      <button class="btn btn-primary" type="button">49,99 €</button>
+                      <button href="#" class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        Add to Wishlist</button>
+                    </div>
+                    <!-- End Item -->
+                    <div class="item">
+                      <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
+                      <h4>
+                        <small>Gold sandals with shiny touch</small>
+                      </h4>
+                      <button class="btn btn-primary" type="button">9,99 €</button>
+                      <button href="#" class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        Add to Wishlist</button>
+                    </div>
+                    <!-- End Item -->
+                    <div class="item">
+                      <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
+                      <h4>
+                        <small>Denin jacket stamped</small>
+                      </h4>
+                      <button class="btn btn-primary" type="button">49,99 €</button>
+                      <button href="#" class="btn btn-default" type="button">
+                        <span class="glyphicon glyphicon-heart"></span>
+                        Add to Wishlist</button>
+                    </div>
+                    <!-- End Item -->
+                  </div>
+                  <!-- End Carousel Inner -->
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+                <!-- /.carousel -->
+                <li class="divider"></li>
+                <li>
+                  <a href="#">View all Collection
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span></a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <!-- <li> <a href="#">Store locator</a> </li> -->
+      </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!-- Search Bar -->
-        <li></li>
         <!-- Home -->
         <li><%= link_to root_path do %>
           <i class="glyphicon glyphicon-home"></i>
@@ -55,36 +313,56 @@
     <% end %>
   </li>
 
-  <!-- Account -->
   <li class="dropdown">
-    <li><%= link_to "#", { :class => 'dropdown-toggle', 'data-toggle' => 'dropdown', 'data-placement' => 'top', :title => 'Account', 'data-original-title' => 'Account' } do %>
-      <!-- <i class="glyphicon glyphicon-user"></i> -->
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
       <%= gravatar_for @current_user, size: 20 %>
       Account
       <b class="caret"></b>
-    <% end %>
-
-    <!-- Profile -->
+    </a>
     <ul class="dropdown-menu">
-      <li><%= link_to current_user do %>
-        <i class="glyphicon glyphicon-eye-open"></i>
-        Profile
-      <% end %>
-    </li>
-    <!-- Setting -->
-    <li><%= link_to edit_user_path(current_user) do %>
-      <i class="glyphicon glyphicon-cog"></i>
-      Settings
-    <% end %>
-  </li>
-  <!-- Logout -->
-  <li class="divider"></li>
-  <li>
-    <li><%= link_to logout_path, method: :delete do %>
-      <i class="glyphicon glyphicon-off"></i>
-      Log out
-    <% end %>
-  </li>
+      <li>
+        <div class="navbar-content">
+          <div class="row">
+            <div class="col-md-5">
+              <!-- <img src="http://placehold.it/120x120" alt="Alternate Text" class="img-responsive"/> -->
+              <%= gravatar_for @current_user, size: 120 %>
+              <p class="text-center small">
+                <%= link_to edit_user_path(current_user) do %>
+                <i class="glyphicon glyphicon-picture"></i>
+                Change Photo
+              <% end %>
+            </p>
+          </div>
+          <div class="col-md-7">
+            <span><%= @current_user.name %></span>
+            <p class="text-muted small">
+              <%= @current_user.email %></p>
+            <div class="divider"></div>
+            <%= link_to current_user , class: "btn btn-primary btn-sm active" do %>
+            <i class="glyphicon glyphicon-eye-open"></i>
+            View Profile
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-footer">
+      <div class="navbar-footer-content">
+        <div class="row">
+          <div class="col-md-6">
+            <%= link_to edit_user_path(current_user), class:"btn btn-default btn-sm" do %>
+            <i class="glyphicon glyphicon-cog"></i>
+            Change Password
+          <% end %>
+        </div>
+        <div class="col-md-6">
+          <%= link_to logout_path,class: "btn btn-default btn-sm pull-right", method: :delete do %>
+          <i class="glyphicon glyphicon-off"></i>
+          Sign out
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 </li>
 </ul>
 </li>
@@ -99,8 +377,40 @@ Log In
 </li>
 
 <% end %>
-
 </ul>
-</div>
-</div>
-</nav>
+</ul></div><!-- /.nav-collapse --> </div> <!-- /.container-fluid --></nav><aside id="accordion" class="social text-vertical-center"> <div class="accordion-social"><ul class="panel-collapse collapse in nav nav-stacked" role="tabpanel" aria-labelledby="social-collapse" id="collapseOne">
+<li>
+<a href="http://www.goxr3plus.co.nf" target="_blank">
+<i class="fa fa-lg fa-facebook"></i>
+</a>
+</li>
+<li>
+<a href="http://www.goxr3plus.co.nf" target="_blank">
+<i class="fa fa-lg fa-twitter"></i>
+</a>
+</li>
+<li>
+<a href="http://www.goxr3plus.co.nf" target="_blank">
+<i class="fa fa-lg fa-google-plus"></i>
+</a>
+</li>
+<li>
+<a href="http://www.goxr3plus.co.nf" target="_blank">
+<i class="fa fa-lg fa-github"></i>
+</a>
+</li>
+<li>
+<a href="http://www.goxr3plus.co.nf" target="_blank">
+<i class="fa fa-lg fa-linkedin"></i>
+</a>
+</li>
+<li>
+<!-- <a href="skype:live:soldierupdesigns?call">
+<i class="fa fa-lg fa-skype" target="_blank"></i>
+</a> -->
+</li>
+<li>
+<a href="http://www.goxr3plus.co.nf" target="_blank">
+<i class="fa fa-lg fa-stack-exchange"></i>
+</a>
+</li></ul> </div></aside>

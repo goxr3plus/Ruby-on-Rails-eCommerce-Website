@@ -20,6 +20,7 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+
 /* Global Styles */
 *, *:  before, *:after {
     -webkit-box-sizing: border-box !important;
@@ -1058,7 +1059,7 @@ Image credits: unsplash.com
 /*******************************/
 /*         Footer Queries      */
 /*******************************/
-footer,.footer {
+/* footer,.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -1076,7 +1077,7 @@ footer,.footer {
 .footer-ul li { line-height:29px; font-size:12px;}
 .footer-ul li a { color:#a0a3a4; transition: color 0.2s linear 0s, background 0.2s linear 0s; }
 .footer-ul i { margin-right:10px;}
-.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ff670f; }
+.footer-ul li a:hover {transition: color 0.2s linear 0s, background 0.2s linear 0s; color:#ff670f; } */
 
 .social:hover {
      -webkit-transform: scale(1.1);
@@ -1115,3 +1116,48 @@ footer,.footer {
      margin:0px auto;
      padding:0px;
  }
+
+ /* Special class on .container surrounding .navbar, used for positioning it into place. */
+.navbar-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin-top: 20px;
+}
+
+/* Flip around the padding for proper display in narrow viewports */
+.navbar-wrapper .container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.navbar-wrapper .navbar {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.navbar-content
+{
+    width:320px;
+    padding: 15px;
+    padding-bottom:0px;
+}
+.navbar-content:before, .navbar-content:after
+{
+    display: table;
+    content: "";
+    line-height: 0;
+}
+.navbar-nav.navbar-right:last-child {
+margin-right: 15px !important;
+}
+.navbar-footer
+{
+    background-color:#DDD;
+}
+.navbar-footer-content { padding:15px 15px 15px 15px; }
+.dropdown-menu {
+padding: 0px;
+overflow: hidden;
+}
