@@ -283,16 +283,20 @@
       <% if logged_in? %>
 
         <li><%= link_to users_path do %>
-          <i class="glyphicon glyphicon-sunglasses"></i>
+          <i class="fa fa-users"></i>
           Users
+          <span class="badge ">
+            <i id="total_cart_items_badge">(<%= User.count %>)</i>
+          </span>
         <% end %>
       </li>
 
       <!-- Cart -->
       <li><%= link_to cart_path(@current_cart) do %>
+        My Cart
         <span class="badge ">
-          <i class="glyphicon glyphicon-shopping-cart" style="color:#FFD700; font-size:15px"></i>
-          Cart
+          <i class="fa fa-cart-plus" style="color:#FFD700; font-size:20px"></i>
+
           <i id="total_cart_items_badge">(<%= @current_cart.line_items.count %>)</i>
         </span>
       <% end %>
@@ -300,16 +304,16 @@
 
     <!-- Orders -->
     <li><%= link_to orders_path do %>
-      Orders
+      My Orders
       <span class="badge ">
+          <i class="fa fa-shopping-basket" style="color:#FFD700; font-size:20px"></i>
         <%if @current_user.admin? %>
           (<%= @current_user.orders.count %>) Admin / (<%= Order.count%>) Total
         <% else %>
           <%= @current_user.orders.count %>
         <% end %>
-        <i class="glyphicon glyphicon-road" style="color:black"></i>
-      </span>
 
+      </span>
     <% end %>
   </li>
 

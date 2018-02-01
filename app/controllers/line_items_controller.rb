@@ -25,6 +25,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save!
+        format.html { redirect_back(fallback_location: @current_cart) }
         format.js
         # below is a second way without creating ``
         # format.js { render :js => "alert('hi')" }
