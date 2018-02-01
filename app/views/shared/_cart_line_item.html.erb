@@ -1,0 +1,33 @@
+<tr>
+  <td><%= link_to product do%>
+    <% if product.picture? %>
+      <%= image_tag product.picture.url , size:"90x90"%>
+    <% else %>
+      <%= image_tag "no_image.png", size:"90x90" %>
+    <%end%>
+  <%end %>
+  x
+  <%= line_item.quantity %>
+</td>
+<td><%= product.name %></td>
+<td>In stock</td>
+<td class="text-center">
+  <!-- reduce -->
+  <%=link_to line_item_reduce_path(:id => line_item) , method: :post, class: "btn btn-danger" , style: "margin-top:15px;" do %>
+  <i class="glyphicon glyphicon-minus" style="color:white;"></i>
+
+<% end %>
+<!-- add -->
+<%=link_to line_item_add_path(:id => line_item) , method: :post , class: "btn btn-success" , style: "margin-top:15px;" do %>
+<i class="glyphicon glyphicon-plus" style="color:white;"></i>
+<% end %>
+</td>
+<td class="text-right"><%= product.price %>
+$</td>
+<td class="text-right">
+<!-- Remove -->
+<%=link_to line_item_path(line_item) ,method: :delete ,class: "btn btn-danger", data: { confirm: 'Are you sure?' } do %>
+<i class="fa fa-trash"></i>
+<% end %>
+</td>
+</tr>

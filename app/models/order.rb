@@ -1,6 +1,13 @@
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
+  # enum pay_method: {
+  #   'Check' => 0,
+  #   'Credit card' => 1,
+  #   'Purchase order' => 2
+  # }
   belongs_to :user
+  # validates :pay_method, :description, presence: true
+  # validates :pay_method, inclusion: pay_methods.keys
 
   # LOGIC
   def sub_total

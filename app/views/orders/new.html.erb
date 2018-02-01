@@ -1,17 +1,29 @@
 <div class="center jumbotron">
   <%= form_for(@order) do |f| %>
-  <p style="margin-top:25px">
-    <%= f.label :pay_method %><br>
-    <%= f.text_field :pay_method, required: true, autofocus: true %>
-  </p>
-  <p>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %>
+        prohibited this order from being saved:</h2>
+      <ul>
+        <% @order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.submit "Finish Order"%>
-  </p>
+    <%= f.text_field :description , required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :pay_method %>
+    <%= f.text_field :pay_method, required: true, autofocus: true %>
+    <%#= f.select :pay_method, Order.pay_methods.keys, prompt: 'Select a payment method' %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Place Order' %>
+    </div>
 
-  <%= render 'shared/cart2' , :cart => @cart %>
-<% end %>
+    <%= render 'shared/cart2' , :cart => @cart %>
+  <% end %>
 </div>

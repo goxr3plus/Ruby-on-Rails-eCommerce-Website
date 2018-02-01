@@ -1,55 +1,74 @@
-<div class="center jumbotron">
-  <p>
-    Your Card => Total Items (<%= @cart.line_items.count %>)
-  </p>
-  <ul class="users">
-    <% @cart.line_items.each do |line_item| %>
-      <%= render 'shared/product' , :product => line_item.product %>
-      <li>Quantity:
-        <%= line_item.quantity %>
-        | Total Price:
-        <%= number_to_currency(line_item.total_price) %>
-        <!-- See lineItem section below for explanation of line_item links -->
-        <ul>
-          <!-- <li> -->
-          <!-- <%#= link_to "Add one", line_item_add_path(:id => line_item), method: :post %> -->
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">My Cart</h1>
+  </div>
+</section>
 
-          <!-- reduce -->
-          <%=link_to line_item_reduce_path(:id => line_item) , method: :post, class: "btn btn-danger" , style: "margin-top:15px;" do %>
-          <i class="glyphicon glyphicon-minus" style="color:black;"></i>
-          Reduce
+<div class="container mb-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Product</th>
+              <th scope="col">Available</th>
+              <th scope="col" class="text-center">Quantity</th>
+              <th scope="col" class="text-right">Price</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart.line_items.each do |line_item| %>
+              <%= render 'shared/cart_line_item' , :product => line_item.product , :line_item => line_item %>
+            <% end %>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Sub-Total</td>
+              <td class="text-right"><%= number_to_currency(@cart.sub_total) %></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>Shipping</td>
+              <td class="text-right">free</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <strong>Total</strong>
+              </td>
+              <td class="text-right">
+                <strong><%= number_to_currency(@cart.sub_total) %></strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col mb-2">
+      <div class="row">
+        <div class="col-sm-12  col-md-4">
+          <%= button_to "Continue Shopping", root_path , class: "btn btn-block btn-light" , method: :get%>
+        </div>
+        <% if(@current_cart.line_items.count !=0 ) %>
+          <div class="col-sm-12  col-md-4">
+            <%= button_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} , class: "btn btn-lg btn-block btn-warning text-uppercase"%>
+          </div>
+          <div class="col-sm-12 col-md-4 text-right">
+            <%= button_to "Checkout", new_order_path , method: :get,class: "btn btn-lg btn-block btn-success text-uppercase"%>
+          </div>
         <% end %>
-
-        <!-- add -->
-        <%=link_to line_item_add_path(:id => line_item) , method: :post , class: "btn btn-success" , style: "margin-top:15px;" do %>
-        <i class="glyphicon glyphicon-plus" style="color:black;"></i>
-        Add
-      <% end %>
-
-      <!-- Remove -->
-      <%=link_to line_item_path(line_item) ,method: :delete ,class: "btn btn-warning" , style: "margin-top:15px;" do %>
-      <i class="glyphicon glyphicon-remove" style="color:black;"></i>
-      Remove Item
-    <% end %>
-
-    <!-- <%#= link_to "Reduce one", line_item_reduce_path(:id => line_item), method: :post %> -->
-    <!-- </li> -->
-    <!-- <li> -->
-    <%#= link_to "Remove item", line_item_path(line_item), method: :delete %>
-      <!-- </li> -->
-      <hr class="style18">
-    </ul>
-
-  <% end %>
-</ul>
-<h3>Total price:
-<%= number_to_currency(@cart.sub_total) %></h3>
-
-<% if(@current_cart.line_items.count !=0 ) %>
-
-  <!-- See Order section below for explanation of new_order_path -->
-  <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
-  |
-  <%= link_to "Proceed to checkout", new_order_path %>
-<% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -21,8 +21,8 @@
   <%= number_to_currency(@order.sub_total) %></h3>
 </p>
 
-<button type="button" class="btn btn-success" data-toggle="collapse" data-target="#<%= @order.id %>">Show Items</button>
-<div id="<%= @order.id %>" class="collapse">
+<button type="button" class="btn btn-success" data-toggle="collapse" aria-expanded="true" data-target="#<%= @order.id %>">Show/Hide Items</button>
+<div id="<%= @order.id %>" class="collapse in">
   <ul class="users">
     <% @order.line_items.each do |item| %>
       <%= item.quantity %>

@@ -1,0 +1,5 @@
+<% if product.picture? %>
+  <%= image_tag product.picture.url %>
+<% else %>
+  <%= image_tag "no_image.png", size:"150x150" %>
+<%end%>
