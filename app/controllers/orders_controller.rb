@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user, only: %i[index show new create]
   before_action :user_is_admin, only: %i[destroy edit]
+  before_action :cart_is_empty, only: %i[new create]
 
   def index
     @orders = Order.all
@@ -66,6 +67,14 @@ class OrdersController < ApplicationController
      @order = Order.find(params[:id])
      @order.update(order_params)
      redirect_to orders_path
+  end
+
+  def cart_is_empty
+    if @current_cart.line_items.empty?
+      store_location
+      flash[:danger] = 'You cart is empty!'
+      redirect_to cart_path(@current_cart)
+    end
   end
 
   private
