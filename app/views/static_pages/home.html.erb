@@ -1,4 +1,76 @@
 <% provide(:title,("Home")) %>
+  <div class="container">
+    <div class="row">
+      <!-- Carousel -->
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <%= image_tag("carousel1.jpg", :alt => "rss feed" , class: "img2") %>
+            <!-- <img class="img2" src="/images/carousel1." alt="First slide"> -->
+            <!-- Static Header -->
+            <div class="header-text hidden-xs">
+              <div class="col-md-12 text-center">
+                <h2 style="color:white">
+                  <span><%= link_to image_tag("logo.png",size:"64x64" , alt: "Shop logo"), 'http://rubyonrails.org/' %>
+                    Welcome to
+                    <strong>Dope Shop</strong>
+                  </span>
+                </h2>
+                <br>
+
+                <br>
+                <!-- <div class=""> <a class="btn btn-theme btn-sm btn-min-block" href="#">Login</a> <a class="btn btn-theme btn-sm btn-min-block" href="#">Register</a> </div> -->
+              </div>
+            </div>
+            <!-- /header-text -->
+          </div>
+          <div class="item">
+            <%= image_tag("carousel2.jpg", :alt => "rss feed" , class: "img2") %>
+            <!-- <img class="img2" src="http://unsplash.s3.amazonaws.com/batch%209/barcelona-boardwalk.jpg" alt="Second slide"> -->
+            <!-- Static Header -->
+            <div class="header-text hidden-xs">
+              <div class="col-md-12 text-center">
+                <h2 style="color:white">
+                  <span>Best products on best prices!</span>
+                </h2>
+                <br>
+                <br>
+                <!-- <div class=""> <a class="btn btn-theme btn-sm btn-min-block" href="#">Login</a> <a class="btn btn-theme btn-sm btn-min-block" href="#">Register</a> </div> -->
+              </div>
+            </div>
+            <!-- /header-text -->
+          </div>
+          <div class="item">
+            <%= image_tag("carousel3.jpg", :alt => "rss feed" , class: "img2") %>
+            <!-- <img class="img2" src="http://unsplash.s3.amazonaws.com/batch%209/barcelona-boardwalk.jpg" alt="Third slide"> -->
+            <!-- Static Header -->
+            <div class="header-text hidden-xs">
+              <div class="col-md-12 text-center">
+                <h2 style="color:white">
+                  <span>Start exploring</span>
+                </h2>
+                <br>
+                <br>
+                <!-- <div class=""> <a class="btn btn-theme btn-sm btn-min-block" href="#">Login</a> <a class="btn btn-theme btn-sm btn-min-block" href="#">Register</a> </div> -->
+              </div>
+            </div>
+            <!-- /header-text -->
+          </div>
+        </div>
+        <!-- Controls -->
+        <!-- <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span
+        class="glyphicon glyphicon-chevron-right"></span> </a> -->
+      </div>
+      <!-- /carousel -->
+    </div>
+  </div>
   <% if false %>
     <% if logged_in? %>
       <div class="row">
@@ -19,11 +91,7 @@
     <%# else %><% end %>
     <% if !logged_in? %>
       <div class="center jumbotron">
-        <h2>
-          <%= link_to image_tag("logo.png",size:"64x64" , alt: "Shop logo"), 'http://rubyonrails.org/' %>
-          Welcome to dopeshop!
-
-        </h2>
+        <!-- <h2> <%#= link_to image_tag("logo.png",size:"64x64" , alt: "Shop logo"), 'http://rubyonrails.org/' %> Welcome to dopeshop! </h2> -->
 
         <% if !logged_in? %>
           <%= link_to "Log in", login_path, class: "btn btn-lg btn-success" %>

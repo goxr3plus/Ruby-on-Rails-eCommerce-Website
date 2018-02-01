@@ -30,6 +30,7 @@ body {
   height: 100%;
   font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
   overflow-x: hidden;
+  background-color:white;
 }
 
 html {
@@ -1427,20 +1428,20 @@ Image credits: unsplash.com
   padding: 0;
   overflow: hidden;
 }
-/* CAROUSEL FOR FOOTER BAR */
-.carousel-control.left,
-.carousel-control.right {
-  background: none;
-  width: 25px;
-}
-
-.carousel-control.left {
-  left: -25px;
-}
-
-.carousel-control.right {
-  right: -25px;
-}
+// /* CAROUSEL FOR FOOTER BAR */
+// .carousel-control.left,
+// .carousel-control.right {
+//   background: none;
+//   width: 25px;
+// }
+//
+// .carousel-control.left {
+//   left: -25px;
+// }
+//
+// .carousel-control.right {
+//   right: -25px;
+// }
 
 .broun-block {
   background: url("http://myinstantcms.ru/images/bg-broun1.jpg") repeat scroll center top rgba(0, 0, 0, 0);
