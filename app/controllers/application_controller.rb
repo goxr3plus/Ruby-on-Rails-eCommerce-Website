@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
     end
 
     if session[:cart_id].nil?
-      @current_cart = Cart.create(:user_id => nil)
+      @current_cart = Cart.create(user_id: nil)
       session[:cart_id] = @current_cart.id
     end
   end
@@ -37,5 +37,4 @@ class ApplicationController < ActionController::Base
       redirect_back(fallback_location: root_url)
     end
   end
-
 end

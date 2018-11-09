@@ -2,12 +2,12 @@ class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :microposts, dependent: :destroy
   has_many :order, dependent: :destroy
-  has_many :active_relationships, class_name:  'Relationship',
+  has_many :active_relationships, class_name: 'Relationship',
                                   foreign_key: 'follower_id',
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  'Relationship',
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
                                    foreign_key: 'followed_id',
-                                   dependent:   :destroy
+                                   dependent: :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
@@ -18,7 +18,9 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
   validates :name, presence: true, length: { maximum: 50 }
-  # VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!\#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\z/
+  # VALID_EMAIL_REGEX = /\A[a-zA-Z0-9.!\#$%&'*+\/=?^_`{|}~-]
+  # +@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9]
+  # (?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\z/
   # validates :email, presence: true, length: { maximum: 255 },
   #                   format: { with: VALID_EMAIL_REGEX },
   #                   uniqueness: { case_sensitive: false }
@@ -30,8 +32,11 @@ class User < ApplicationRecord
 
   # Returns the hash digest of the given string.
   def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
     BCrypt::Password.create(string, cost: cost)
   end
 
@@ -49,6 +54,7 @@ class User < ApplicationRecord
   def authenticated?(attribute, token)
     digest = send("#{attribute}_digest")
     return false if digest.nil?
+
     BCrypt::Password.new(digest).is_password?(token)
   end
 
@@ -70,7 +76,8 @@ class User < ApplicationRecord
   # Sets the password reset attributes.
   def create_reset_digest
     self.reset_token = User.new_token
-    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token),
+                   reset_sent_at: Time.zone.now)
   end
 
   # Sends password reset email.

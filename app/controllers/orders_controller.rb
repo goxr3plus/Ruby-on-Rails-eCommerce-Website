@@ -64,9 +64,9 @@ class OrdersController < ApplicationController
   end
 
   def update
-     @order = Order.find(params[:id])
-     @order.update(order_params)
-     redirect_to orders_path
+    @order = Order.find(params[:id])
+    @order.update(order_params)
+    redirect_to orders_path
   end
 
   def cart_is_empty

@@ -26,15 +26,12 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
-
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product }
-        format.json { render :show, status: :created, location: @product }
-        flash[:info] = 'Product was successfully created.'
+        product_save_success_response(format,
+                                      'Product was successfully created.')
       else
-        format.html { render :new }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        product_save_failure_response(format, :new)
       end
     end
   end
@@ -44,12 +41,10 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product}
-        format.json { render :show, status: :ok, location: @product }
-        flash[:info] = 'Product was successfully updated.'
+        product_save_success_response(format,
+                                      'Product was successfully updated.')
       else
-        format.html { render :edit }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
+        product_save_failure_response(format, :edit)
       end
     end
   end
@@ -72,7 +67,22 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  def product_save_success_response(format, message)
+    format.html { redirect_to @product }
+    format.json { render :show, status: :created, location: @product }
+    flash[:info] = message
+  end
+
+  def product_save_failure_response(format, action)
+    format.html { render action }
+    format.json do
+      render json: @product.errors,
+             status: :unprocessable_entity
+    end
+  end
+
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
   def product_params
     params.require(:product).permit(:name, :description, :picture, :price)
   end
