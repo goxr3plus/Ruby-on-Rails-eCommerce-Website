@@ -1,24 +1,23 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update destroy following followers]
+  before_action :logged_in_user, only: %i[index edit update
+                                          destroy following followers]
   before_action :correct_user, only: %i[edit update]
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.where(activated: true) # .paginate(page: params[:page], per_page: 6)
-    if params[:search]
-      @users = User.search(params[:search]).order('created_at ASC').paginate(page: params[:page], per_page: 5)
-    else
-      @users = @users.order('created_at ASC').paginate(page: params[:page], per_page: 5)
-    end
+    @users = if params[:search]
+               User.search(params[:search]).order('created_at ASC')
+                   .paginate(page: params[:page], per_page: 5)
+             else
+               User.where(activated: true).order('created_at ASC')
+                   .paginate(page: params[:page], per_page: 5)
+             end
   end
 
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page], per_page: 4)
-
-    # extra
-    @micropost  = current_user.microposts.build
-    @feed_items = @user.feed.paginate(page: params[:page], per_page: 6)
+    fetch_additional_fields
     redirect_to(root_url) && return unless @user.activated?
   end
 
@@ -30,11 +29,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params) # Not the final implementation!
     if @user.save
-      # Handle a successful save. massalel
-      @user.send_activation_email
-      UserMailer.account_activation(@user).deliver_now
-      # "Order created - Click <a href='https://www.google.com'>here</a> to pay for it!".html_safe
-      flash[:info] = "Visit this link to activate your account ~-> #{edit_account_activation_url(@user.activation_token, email: @user.email)}".html_safe
+      notify_user
+      flash[:info] = generate_activation_message.html_safe
       redirect_to root_url
     else
       render 'new'
@@ -53,7 +49,7 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
-   end
+  end
 
   def destroy
     User.find(params[:id]).destroy
@@ -80,7 +76,16 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user)
+          .permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def notify_user
+    # Handle a successful save. massalel
+    @user.send_activation_email
+    UserMailer.account_activation(@user).deliver_now
+    # "Order created - Click <a href='https://www.google.com'>here</a>
+    # to pay for it!".html_safe
   end
 
   # Before filters
@@ -98,5 +103,16 @@ class UsersController < ApplicationController
 
   def create_activation_digest
     # Create the token and digest.
+  end
+
+  def fetch_additional_fields
+    @micropost  = current_user.microposts.build
+    @feed_items = @user.feed.paginate(page: params[:page], per_page: 6)
+  end
+
+  def generate_activation_message
+    'Visit this link to activate your account ~-> ' +
+      edit_account_activation_url(@user.activation_token,
+                                  email: @user.email).to_s
   end
 end
