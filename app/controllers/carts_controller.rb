@@ -14,7 +14,8 @@ class CartsController < ApplicationController
 
   private
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet
+  # , only allow the white list through.
   def cart_params
     params.require(:cart).permit(:user_id)
   end
