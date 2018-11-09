@@ -5,11 +5,13 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-    if params[:search]
-      @orders = Order.search(params[:search]).order('created_at ASC').paginate(page: params[:page], per_page: 5)
-    else
-      @orders = @orders.order('created_at ASC').paginate(page: params[:page], per_page: 5)
-    end
+    @orders = if params[:search]
+                Order.search(params[:search]).order('created_at ASC')
+                     .paginate(page: params[:page], per_page: 5)
+              else
+                @orders.order('created_at ASC')
+                       .paginate(page: params[:page], per_page: 5)
+              end
   end
 
   def show
@@ -24,15 +26,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.update(user_id: @current_user.id)
-    @current_cart.line_items.each do |item|
-      item.cart_id = nil
-      item.order_id = @order.id
-      item.save
-      @order.line_items << item
-    end
+    add_line_items_to_order
     @order.save!
-    Cart.destroy(session[:cart_id])
-    session[:cart_id] = nil
+    reset_sessions_cart
     redirect_to orders_path
     # byebug
   end
@@ -70,14 +66,28 @@ class OrdersController < ApplicationController
   end
 
   def cart_is_empty
-    if @current_cart.line_items.empty?
-      store_location
-      flash[:danger] = 'You cart is empty!'
-      redirect_to cart_path(@current_cart)
-    end
+    return unless @current_cart.line_items.empty?
+
+    store_location
+    flash[:danger] = 'You cart is empty!'
+    redirect_to cart_path(@current_cart)
   end
 
   private
+
+  def add_line_items_to_order
+    @current_cart.line_items.each do |item|
+      item.cart_id = nil
+      item.order_id = @order.id
+      item.save
+      @order.line_items << item
+    end
+  end
+
+  def reset_sessions_cart
+    Cart.destroy(session[:cart_id])
+    session[:cart_id] = nil
+  end
 
   def order_params
     params.require(:order).permit(:user_id, :pay_method, :description)
