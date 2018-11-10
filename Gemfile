@@ -25,6 +25,7 @@ gem 'gravatar_image_tag'
 group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'byebug', '3.5.0'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -41,6 +42,7 @@ group :test do
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
   gem 'minitest'  ,               '5.10.3'
+  gem 'factory_bot'
 end
 
 group :production do
