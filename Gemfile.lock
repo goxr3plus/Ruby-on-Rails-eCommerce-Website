@@ -85,6 +85,8 @@ GEM
     erubi (1.7.0)
     excon (0.60.0)
     execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
     faker (1.8.7)
       i18n (>= 0.7)
     ffi (1.9.18)
@@ -467,6 +469,7 @@ DEPENDENCIES
   carrierwave (= 1.1.0)
   coffee-rails (= 4.2.2)
   email_validator (~> 1.6)
+  factory_bot
   faker (~> 1.8, >= 1.8.7)
   figaro
   fog
