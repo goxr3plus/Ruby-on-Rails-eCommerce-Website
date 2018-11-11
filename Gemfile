@@ -43,6 +43,7 @@ group :test do
   gem 'guard-minitest',           '2.4.4'
   gem 'minitest'  ,               '5.10.3'
   gem 'factory_bot'
+  gem 'simplecov', require: false
 end
 
 group :production do
