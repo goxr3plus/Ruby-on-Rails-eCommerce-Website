@@ -1,9 +1,19 @@
+---
+
+<h3 align="center" > Ruby E-Commerce ( <a href="https://dopeshop.herokuapp.com">Demo</a> )</h3>
+<p align="center">
+💎
+</p>
+<p align="center">
+<sup>
+<b>E-Commerce website i made , it needs a little bit more work but is almost ready . It is also mobile friendly . </b>
+</sup>
+</p>
+
+---
+
 
 ### Warning ( I have disabled Google Cloud Console so some features of the application like ( image loading will not work ) but the code is there :)
-
-#### >>>>>>>----------------------- CURRENTLY UNDER DEVELOPMENT-------------------<<<<<<<<<<
-
-Hello :slightly_smiling_face: this is the link of the E-Commerce website i made , it needs a little bit more work but is almost ready . It is also mobile friendly . https://dopeshop.herokuapp.com/ 
 
 I have added some accounts just for checking , so to log in as admin -> ```admin@dopeshop.com``` and ```123123``` , 
 to log in as ordinary user -> ```noadmin@dopeshop.com``` and ```123123```
