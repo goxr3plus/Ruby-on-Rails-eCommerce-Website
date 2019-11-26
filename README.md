@@ -1,6 +1,6 @@
 ---
 
-<h3 align="center" > Ruby E-Commerce ( <a href="https://dopeshop.herokuapp.com">Demo</a> )</h3>
+<h3 align="center" > Ruby E-Commerce ( <a href="https://dopeshop.herokuapp.com" target="_blank">Demo</a> )</h3>
 <p align="center">
 💎
 </p>
