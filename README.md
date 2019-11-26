@@ -13,18 +13,12 @@
 ---
 
 
-### Warning ( I have disabled Google Cloud Console so some features of the application like ( image loading will not work ) but the code is there :)
+#### Warning ( I have disabled Google Cloud Console so some features of the application like ( image loading will not work ) but the code is there :)
 
 I have added some accounts just for checking , so to log in as admin -> ```admin@dopeshop.com``` and ```123123``` , 
 to log in as ordinary user -> ```noadmin@dopeshop.com``` and ```123123```
 
-Of course you can create as many ordinary users as you want
-
-
-# View the website on Heroku
-
--> https://dopeshop.herokuapp.com/
-
+Of course you can create as many ordinary users as you want .
 
 ## Features
 - **App**
