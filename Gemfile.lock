@@ -82,7 +82,7 @@ GEM
     email_validator (1.6.0)
       activemodel
     erubi (1.7.0)
-    excon (0.60.0)
+    excon (0.71.0)
     execjs (2.7.0)
     faker (1.8.7)
       i18n (>= 0.7)
