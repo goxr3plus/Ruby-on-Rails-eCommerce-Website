@@ -75,7 +75,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     columnize (0.9.0)
-    concurrent-ruby (1.1.8)
+    concurrent-ruby (1.1.10)
     crass (1.0.5)
     debugger-linecache (1.2.0)
     domain_name (0.5.20170404)
@@ -245,8 +245,8 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.2.5)
-    globalid (0.4.1)
-      activesupport (>= 4.2.0)
+    globalid (1.0.1)
+      activesupport (>= 5.0)
     gravatar_image_tag (1.2.0)
     guard (2.13.0)
       formatador (>= 0.2.4)
@@ -423,7 +423,7 @@ GEM
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.3)
-    tzinfo (1.2.9)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     tzinfo-data (1.2017.3)
       tzinfo (>= 1.0.0)
